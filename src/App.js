@@ -5,6 +5,7 @@ import Navbar from './components/navbar.js';
 import HeroSection from './components/LandingPage/herosection.js'; // Import your new HeroSection
 import { ThemeProvider } from './components/ThemeContext.js';
 import LandingPage from './components/LandingPage.js';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (
