@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useTheme } from './ThemeContext.js';
+import { useTheme } from '../ThemeContext.js';
 import FeatureCard from './FeatureCard.js';
 
 // --- Replace these with your actual image URLs ---
@@ -43,7 +43,7 @@ const HeroSection = () => {
         const gap = 20;
         const baseStyle = {
             position: 'absolute',
-            height: '500px',
+            height: '540px',
             transition: 'all 0.8s cubic-bezier(0.86, 0, 0.07, 1)',
         };
         if (isActive) {
@@ -74,11 +74,11 @@ const HeroSection = () => {
     const styles = {
         heroContainer: {
             width: '100%',
-            height: '90vh',
+            height: '93vh',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            background: '#f0f2f5', // Light grey background for the page
+            background: '#ffffffff', // Light grey background for the page
             fontFamily: theme.fonts.body,
             padding: '2rem',
             boxSizing: 'border-box',
@@ -110,15 +110,15 @@ const HeroSection = () => {
             marginBottom: '1rem',
         },
         heading: {
-            fontSize: '3.5rem',
-            fontWeight: '500',
+            fontSize: '2.5rem',
+            fontWeight: '100',
             lineHeight: 1.2,
             maxWidth: '800px',
             color: theme.colors.text,
         },
         ctaWrapper: {
             textAlign: 'right',
-            maxWidth: '300px',
+            maxWidth: '280px',
         },
         ctaText: {
             color: theme.colors.secondaryText,
@@ -171,10 +171,12 @@ const HeroSection = () => {
                 <div style={styles.topSection}>
                     <div style={styles.textWrapper}>
                         <p style={styles.subtleText}>DIGITAL BANKING</p>
-                        <h1 style={styles.heading}>Discover the freedom of banking on your terms</h1>
+                        <h1 style={styles.heading}>
+  We craft the <span style={{ fontWeight: 600 }}>Data Driven strategies </span> that turn online presence into profit
+</h1>
                     </div>
                     <div style={styles.ctaWrapper}>
-                        <p style={styles.ctaText}>Get business banking, card, bill pay, travel, and reimbursements — all in one scalable solution</p>
+                        <p style={styles.ctaText}>From brand strategy to final conversion your complete digital marketing solution is right here</p>
                         <button style={styles.demoButton}>
                             Get Demo Account
                             <span style={styles.arrowCircle}><ArrowIcon /></span>

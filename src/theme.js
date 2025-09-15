@@ -2,16 +2,19 @@
 
 export const theme = {
   colors: {
-    primary: '#007BFF', // Kept for consistency, though not heavily used here
-    background: '#F0F2F5', // Light grey background
-    text: '#1C1C1E',       // Almost black for main text
-    secondaryText: '#6E6E73', // Grey for secondary text
+    primary: '#00BFA6',    // A professional, vibrant teal/green for buttons and highlights
+    accent: '#007BFF',     // A secondary blue for links or other accents
+    
+    background: '#F7F8FA', // A soft, off-white for the main page background (easier on the eyes than pure white)
+    cardBackground: '#FFFFFF', // Pure white for cards and containers to make them pop
+    
+    text: '#1D232A',       // A dark charcoal for primary text (better than pure black)
+    secondary: '#5A6472',  // A medium grey for secondary text and descriptions
+    
     white: '#FFFFFF',
-    cardShadow: 'rgba(0, 0, 0, 0.1)',
-    // Gradients for the cards
-    personalGradient: 'linear-gradient(135deg, #E0C3FC 0%, #8EC5FC 100%)',
-    businessGradient: 'linear-gradient(135deg, #FFE985 0%, #FA742B 100%)',
-    freelanceGradient: 'linear-gradient(135deg, #96E6A1 0%, #D4FC79 100%)',
+    
+    border: 'rgba(0, 0, 0, 0.1)', // A subtle, semi-transparent black for borders
+    cardShadow: 'rgba(90, 100, 112, 0.1)', // A soft, neutral shadow for a lifting effect
   },
   fonts: {
     heading: 'Inter, sans-serif',
@@ -22,7 +25,7 @@ export const theme = {
     medium: '1rem',
     large: '1.5rem',
     xlarge: '2.5rem',
-    xxlarge: '3.5rem', // For the main hero heading
+    xxlarge: '3.5rem',
   },
   spacing: {
     xsmall: '4px',
@@ -32,12 +35,5 @@ export const theme = {
     xlarge: '64px',
     xxlarge: '96px',
   },
-  borderRadius: '12px', // Slightly rounded edges for a sleek look
-  // New: Specific styles for the card at the bottom
-  card: {
-    // CHANGED: Lowered the alpha from 0.8 to 0.15 for more transparency
-    background: 'rgba(50, 50, 50, 0.05)', // Very transparent 
-      borderColor: 'rgba(255, 255, 255, 0.2)',
- // This subtle border is perfect
-  }
+  borderRadius: '16px', // Modern, rounded edges
 };

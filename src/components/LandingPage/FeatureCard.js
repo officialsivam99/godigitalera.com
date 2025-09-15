@@ -1,5 +1,5 @@
 import React from 'react';
-import { useTheme } from './ThemeContext.js';
+import { useTheme } from '../ThemeContext.js';
 
 // ArrowIcon is no longer needed as the button is removed
 // const ArrowIcon = () => ( ... );
@@ -10,7 +10,7 @@ const FeatureCard = ({ data, isActive, isPrevious }) => { // REMOVED: onNext pro
     const styles = {
         card: {
             width: '100%',
-            height: '80%',
+            height: '95%',
             borderRadius: '24px',
             padding: '2rem',
             boxSizing: 'border-box',
