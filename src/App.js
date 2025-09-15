@@ -6,6 +6,7 @@ import HeroSection from './components/LandingPage/herosection.js'; // Import you
 import { ThemeProvider } from './components/ThemeContext.js';
 import LandingPage from './components/LandingPage.js';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Footer from './components/footer.js';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <main style={{ padding: '2rem', color: '#E0E0E0' }}> {/* Example content below hero */}
           {/* <h2>Our Services</h2>
           <p>More content about your digital marketing services.</p> */}
+          <Footer/>
         </main>
       </div>
     </ThemeProvider>
