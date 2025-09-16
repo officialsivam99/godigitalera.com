@@ -8,263 +8,498 @@ import {
 export default function PostHeroSection() {
   /* ===================== THEME (inline) ===================== */
   const theme = {
-    grad: "linear-gradient(90deg, #7c3aed 0%, #4761ff 100%)",
-    gradAlt: "linear-gradient(90deg, #ff4d8d 0%, #7c3aed 100%)",
-    darkBg: "#0b0b12",
-    ink: "#111827",
-    sub: "#6b7280",
+    ink: "#0f172a",
+    sub: "#64748b",
+    line: "#e5e7eb",
+    bgAlt: "#f8fafc",
+    brandA: "#6d28d9",
+    brandB: "#2563eb",
+    grad: "linear-gradient(90deg,#6d28d9 0%,#2563eb 100%)",
   };
 
-  const section = { padding: "84px 0", background: "#ffffff", position: "relative", overflow: "hidden" };
-  const sectionAlt = { padding: "84px 0", background: "linear-gradient(180deg, #fbfbff 0%, #f7f7fd 100%)", position: "relative", overflow: "hidden" };
-  const headline = { letterSpacing: "-0.3px" };
-  const subText = { color: theme.sub };
+  // spacing & helpers
+  const s = { section: { padding: "72px 0", position: "relative", background: "#fff" } };
+  const sAlt = { ...s.section, background: theme.bgAlt };
+  const chip = { fontSize: 12, padding: "6px 10px", borderRadius: 999, border: `1px solid ${theme.line}`, background: "#fff" };
+  const pill = { padding: "6px 12px", borderRadius: 999, border: `1px solid ${theme.line}`, background: "#fff" };
 
-  const chip = {
-    display: "inline-block",
-    padding: "6px 10px",
-    borderRadius: 999,
-    background: "#f4f4ff",
-    border: "1px solid #e8e8ff",
-    fontSize: 12,
-  };
+  /* ===================== NEW CONTENT (aligned to your new nav/services) ===================== */
+  const solutions = [
+    {
+      key: "traffic",
+      tag: "Acquisition",
+      icon: "bi-speedometer2",
+      title: "Traffic Acceleration",
+      desc: "Compounding qualified reach via SEO, Paid, and creator loops.",
+      bullets: ["Topic clusters", "Guardrailed PMax", "UGC sprints"],
+      img: "https://picsum.photos/seed/901/1200/800",
+    },
+    {
+      key: "conversion",
+      tag: "CRO",
+      icon: "bi-bullseye",
+      title: "Conversion Engine",
+      desc: "Landing systems, heuristic+A/B sprints, funnel repair.",
+      bullets: ["LP library", "A/B cadence", "Form & PDP fixes"],
+      img: "https://picsum.photos/seed/902/1200/800",
+    },
+    {
+      key: "ai",
+      tag: "Automation",
+      icon: "bi-cpu",
+      title: "AI-Powered Marketing",
+      desc: "Predictive audiences, AI message testing, creative scoring.",
+      bullets: ["Predictive segments", "Variant generation", "Creative QA"],
+      img: "https://picsum.photos/seed/903/1200/800",
+    },
+    {
+      key: "retention",
+      tag: "Lifecycle",
+      icon: "bi-arrow-repeat",
+      title: "Retention & Loyalty",
+      desc: "Email/SMS flows, cohorts & LTV compounding playbooks.",
+      bullets: ["RFM segments", "Template kits", "Deliverability ops"],
+      img: "https://picsum.photos/seed/904/1200/800",
+    },
+    {
+      key: "community",
+      tag: "Social",
+      icon: "bi-people",
+      title: "Influencer & Community",
+      desc: "Creator pods and social flywheels that sustain momentum.",
+      bullets: ["Micro-KOL pods", "Ambassador kits", "UGC pipelines"],
+      img: "https://picsum.photos/seed/905/1200/800",
+    },
+  ];
 
-  const glassCard = {
-    borderRadius: 18,
-    background: "rgba(255,255,255,0.62)",
-    backdropFilter: "blur(8px)",
-    border: "1px solid rgba(0,0,0,.06)",
-    boxShadow: "0 14px 40px rgba(2,6,23,0.14)",
-  };
-
-  const darkGlass = {
-    borderRadius: 18,
-    background: "rgba(17,24,39,0.72)",
-    backdropFilter: "blur(8px)",
-    color: "#fff",
-    border: "1px solid rgba(255,255,255,.12)",
-    boxShadow: "0 14px 44px rgba(0,0,0,.35)",
-  };
-
-  const gradBorder = {
-    background: "linear-gradient(#fff,#fff) padding-box, linear-gradient(135deg,#7c3aed,#4761ff,#ff4d8d) border-box",
-    border: "1px solid transparent",
-    borderRadius: 16,
-  };
-
-  const gradBtn = { background: theme.grad, border: "none" };
-  const ghostBtn = { border: "1px solid #e5e7eb", background: "#fff" };
-
-  /* ===================== DATA ===================== */
-  const brands = [
-    ["Acme", 1], ["Nova", 2], ["Axis", 3], ["Helio", 4],
-    ["Vertex", 5], ["Orion", 6], ["Pulse", 7],
+  const industries = [
+    { tag: "SaaS", title: "SaaS Growth Lab", img: "https://picsum.photos/seed/ind1/1200/800" },
+    { tag: "D2C", title: "eCommerce Accelerator", img: "https://picsum.photos/seed/ind2/1200/800" },
+    { tag: "Care", title: "Healthcare Digital Trust", img: "https://picsum.photos/seed/ind3/1200/800" },
+    { tag: "Prop", title: "Real Estate Funnels", img: "https://picsum.photos/seed/ind4/1200/800" },
+    { tag: "Local", title: "Local Domination", img: "https://picsum.photos/seed/ind5/1200/800" },
+    { tag: "B2B", title: "B2B Demand", img: "https://picsum.photos/seed/ind6/1200/800" },
   ];
 
   const kpis = [
-    { icon: "bi-lightning-charge", label: "Avg. Time to Ship", value: "10–14 days", trend: [40,54,66,80,92,95] },
-    { icon: "bi-graph-up-arrow", label: "Median ROAS Uplift", value: "3.2×", trend: [1.2,1.4,1.8,2.4,2.9,3.2] },
-    { icon: "bi-star", label: "Satisfaction", value: "4.9/5", trend: [4.5,4.6,4.7,4.8,4.9,4.9] },
-    { icon: "bi-people", label: "Clients Served", value: "120+", trend: [20,44,66,84,102,120] },
-  ];
-
-  const services = [
-    {
-      icon: "bi-columns-gap",
-      title: "Web Development",
-      desc: "Ultra-fast React/Next builds with conversion-first UX and A/B ready sections.",
-      bullets: ["Design system", "Headless CMS", "CWV 90+ targets"],
-      img: "https://picsum.photos/seed/401/1200/800",
-    },
-    {
-      icon: "bi-search",
-      title: "Search Engine Optimization",
-      desc: "Technical foundation + topical authority + smart internal links.",
-      bullets: ["Topic clusters", "Schema/Entities", "CWV fixes"],
-      img: "https://picsum.photos/seed/402/1200/800",
-    },
-    {
-      icon: "bi-bullseye",
-      title: "PPC & Performance",
-      desc: "Google/META with guardrails, creative loops, and proper attribution.",
-      bullets: ["PMax guardrails", "UGC sprints", "Budget pacing"],
-      img: "https://picsum.photos/seed/403/1200/800",
-    },
-    {
-      icon: "bi-envelope-paper",
-      title: "Email & Lifecycle",
-      desc: "Flows + campaigns that compound. Segments, templates, deliverability.",
-      bullets: ["RFM segments", "Template system", "Seed testing"],
-      img: "https://picsum.photos/seed/404/1200/800",
-    },
-    {
-      icon: "bi-bar-chart-line",
-      title: "Analytics & BI",
-      desc: "GA4 + server-side tagging + BigQuery models + Looker revenue boards.",
-      bullets: ["Event spec", "S2S tagging", "Cohorts/LTV"],
-      img: "https://picsum.photos/seed/405/1200/800",
-    },
-    {
-      icon: "bi-stars",
-      title: "Creative Studio",
-      desc: "Hooks matrices, motion/UGC, and on-brand visuals built to test fast.",
-      bullets: ["Ad sets", "LP visuals", "UGC"],
-      img: "https://picsum.photos/seed/406/1200/800",
-    },
-  ];
-
-  const showcase = [
-    { title: "SaaS Landing System", tag: "Web • CRO", img: "https://picsum.photos/seed/501/1200/800" },
-    { title: "D2C Growth Engine", tag: "SEO • Email", img: "https://picsum.photos/seed/502/1200/800" },
-    { title: "Marketplace PMax", tag: "PPC • Feed", img: "https://picsum.photos/seed/503/1200/800" },
-    { title: "Analytics Overhaul", tag: "GA4 • Looker", img: "https://picsum.photos/seed/504/1200/800" },
-    { title: "B2B Demand Gen", tag: "Paid Social", img: "https://picsum.photos/seed/505/1200/800" },
-    { title: "Email Revenue Lift", tag: "Flows • Templates", img: "https://picsum.photos/seed/506/1200/800" },
-  ];
-
-  const steps = [
-    { icon: "bi-clipboard-check", title: "Audit & Strategy", text: "Quick wins + 90-day plan mapped to revenue KPIs." },
-    { icon: "bi-rocket-takeoff", title: "Build & Ship", text: "Weekly increments—pages, campaigns, creatives." },
-    { icon: "bi-bar-chart", title: "Measure & Learn", text: "Clean tracking, dashboards, readouts, alerts." },
-    { icon: "bi-arrow-repeat", title: "Optimize & Scale", text: "A/Bs, budget shifts, creative loops, CRO." },
-  ];
-
-  const plans = [
-    { name: "Starter",    m: 24000, feat: ["1 website/LP", "SEO basics", "1 ad channel", "Monthly report"] },
-    { name: "Growth",     m: 59000, feat: ["2–3 channels", "CRO tests", "Flows + templates", "Weekly dashboard"], popular: true },
-    { name: "Enterprise", m: 0,     feat: ["PMax guardrails", "Server-side", "Looker suite", "SLA & security"] },
-  ];
-
-  const faqs = [
-    { q: "What industries do you specialize in?", a: "D2C, SaaS, marketplaces, and services. We adapt playbooks to your reality." },
-    { q: "How fast do you launch?", a: "First shippables go live within 10–14 days after access and audit." },
-    { q: "Can you integrate with our in-house team?", a: "Yes—pods integrate with your dev/design/marketing and provide clean handovers." },
-    { q: "How do you measure success?", a: "Revenue, ROAS/CAC, conversion rate, LTV/cohorts, and channel KPIs." },
-  ];
-
-  /* ===================== NEW DATA (for added sections) ===================== */
-  const marqueeWins = [
-    { k: "+218%", v: "Organic clicks", s: "90 days" },
-    { k: "3.4×",  v: "ROAS on META", s: "PMax assist" },
-    { k: "-42%",  v: "CPA drop", s: "Paid Search" },
-    { k: "+68%",  v: "Email rev share", s: "Flows" },
-    { k: "92%",   v: "CWV score", s: "Core Web Vitals" },
-    { k: "+2.1%", v: "CR uplift", s: "CRO sprints" },
+    { k: "10–14 days", v: "To first ship", icon: "bi-rocket-takeoff" },
+    { k: "3.0×", v: "Median ROAS uplift", icon: "bi-graph-up-arrow" },
+    { k: "+2.1%", v: "CR uplift (CRO)", icon: "bi-bar-chart" },
+    { k: "18%", v: "Email revenue share", icon: "bi-envelope-paper" },
   ];
 
   const testimonials = [
-    {
-      quote: "They ship every week. We finally have a clean growth loop—ads, landing pages, and analytics working together.",
-      name: "Priya Sharma",
-      role: "Head of Growth, D2C",
-      img: "https://i.pravatar.cc/120?img=5",
-    },
-    {
-      quote: "Attribution went from guesswork to clarity. Our CAC is stable and creative testing is painless now.",
-      name: "Arjun Mehta",
-      role: "Founder, SaaS",
-      img: "https://i.pravatar.cc/120?img=11",
-    },
-    {
-      quote: "The SEO roadmap + technical fixes moved the needle fast. We saw compounding gains within two months.",
-      name: "Neha Gupta",
-      role: "Marketing Lead, Marketplace",
-      img: "https://i.pravatar.cc/120?img=21",
-    },
+    { name: "Priya Sharma", role: "Head of Growth", text: "Traffic + Conversion gave us momentum in 2 weeks—weekly ships, no fluff." },
+    { name: "Arjun Mehta", role: "Founder, SaaS", text: "AI-assisted messaging stabilized CAC. Finally scalable." },
+    { name: "Neha Gupta", role: "Marketing Lead", text: "Lifecycle + CRO compounded revenue with clean dashboards." },
   ];
 
-  const studies = [
-    {
-      tag: "PPC • CRO",
-      title: "Fintech Leads at 38% Lower CPA",
-      img: "https://picsum.photos/seed/cs1/1200/800",
-      bullets: ["Creative matrix", "PMax guardrails", "Funnel-specific LPs"],
-    },
-    {
-      tag: "SEO • Content",
-      title: "SaaS Trials +162% with Topic Clusters",
-      img: "https://picsum.photos/seed/cs2/1200/800",
-      bullets: ["Entity mapping", "Internals", "Programmatic pages"],
-    },
-    {
-      tag: "Analytics",
-      title: "Looker Boards for Real-Time ROAS",
-      img: "https://picsum.photos/seed/cs3/1200/800",
-      bullets: ["Event spec", "BigQuery", "LTV cohorts"],
-    },
+  const plans = [
+    { name: "Starter",    price: 24000, points: ["1 pod", "SEO or Paid basic", "Monthly readout", "Email support"] },
+    { name: "Growth",     price: 59000, points: ["2–3 pods", "CRO tests", "Lifecycle flows", "Weekly dashboard"], popular: true },
+    { name: "Enterprise", price: 0,     points: ["Custom pods", "Server-side tagging", "Looker boards", "SLA & security"] },
   ];
 
-  const posts = [
-    { title: "Airtight Event Specs: Stop Losing Data", tag: "Analytics", img: "https://picsum.photos/seed/b1/1200/800" },
-    { title: "CRO Checklist for D2C PDPs", tag: "CRO", img: "https://picsum.photos/seed/b2/1200/800" },
-    { title: "SEO Topic Clusters that Actually Scale", tag: "SEO", img: "https://picsum.photos/seed/b3/1200/800" },
+  const faqs = [
+    { q: "Where do I start?", a: "Need pipeline now? Start with Traffic + Conversion. Add pods as ROI compounds." },
+    { q: "What do you report?", a: "Revenue, ROAS/CAC, CR, cohorts/LTV, channel KPIs—one weekly board." },
+    { q: "Pods vs full service?", a: "Begin lean with 1 pod. We integrate with in-house teams cleanly." },
+    { q: "Speed to launch?", a: "First shippables within 10–14 days after access and audit." },
   ];
 
   /* ===================== STATE ===================== */
-  const [hoverIdx, setHoverIdx] = useState(null);
-  const [serviceModal, setServiceModal] = useState(null);
-  const [quoteMsg, setQuoteMsg] = useState("");
-  const [billing, setBilling] = useState("Monthly"); // 'Monthly' | 'Yearly (-15%)'
-  const [showSticky, setShowSticky] = useState(true);
+  const [open, setOpen] = useState(null);            // solution modal data
+  const [billing, setBilling] = useState("Monthly"); // toggle pricing
+  const [toast, setToast] = useState("");
+  const [sticky, setSticky] = useState(true);
 
-  const priceLabel = (p) => {
-    if (p === 0) return "Custom";
-    if (billing.startsWith("Yearly")) return `₹${Math.round(p * 0.85).toLocaleString()}/mo`;
-    return `₹${p.toLocaleString()}/mo`;
-  };
-
-  /* ===================== UTIL: Sparkline ===================== */
-  const Spark = ({ data = [], w = 120, h = 36 }) => {
-    if (!data.length) return null;
-    const min = Math.min(...data), max = Math.max(...data);
-    const pad = 4, step = (w - pad*2) / (data.length - 1 || 1);
-    const y = (v) => max === min ? h/2 : h - pad - ((v - min) / (max - min)) * (h - pad*2);
-    const pts = data.map((v,i)=>`${pad + i*step},${y(v)}`).join(" ");
-    return (
-      <svg width={w} height={h}>
-        <defs>
-          <linearGradient id="sparkGrad" x1="0" x2="1">
-            <stop offset="0%" stopColor="#7c3aed" />
-            <stop offset="100%" stopColor="#4761ff" />
-          </linearGradient>
-        </defs>
-        <polyline fill="none" stroke="url(#sparkGrad)" strokeWidth="2" points={pts} strokeLinejoin="round" strokeLinecap="round"/>
-      </svg>
-    );
-  };
+  const priceLabel = (p) => (p === 0 ? "Custom" : `₹${(billing === "Monthly" ? p : Math.round(p*0.85)).toLocaleString()}/mo`);
 
   /* ===================== RENDER ===================== */
   return (
     <>
-      {/* Hairline gradient divider to mark start (no angled bars) */}
-      <div style={{ height: 1, background: "linear-gradient(90deg,#ecebfd,#f1f5f9)" }} />
+      {/* —————————— Stripe Stats (new look) —————————— */}
+      <section style={{ ...sAlt, padding: "56px 0" }}>
+  <Container>
+    <div
+      style={{
+        display: "grid",
+        gridTemplateColumns: "repeat(4, minmax(0,1fr))",
+        gap: 20,
+      }}
+    >
+      {kpis.map((i, idx) => {
+        // --- auto dynamic bars (stable per card)
+        const bars = Array.from({ length: 6 }, (_, j) =>
+          Math.round(30 + 60 * Math.abs(Math.sin((idx + 1) * (j + 1) * 1.35)))
+        );
+        const delta = bars[bars.length - 1] - bars[0];
+        const up = delta >= 0;
 
-      {/* BRAND STRIP */}
-      <section style={{ ...sectionAlt, padding: "48px 0" }}>
-        <Container>
-          <Row className="g-3 align-items-center">
-            <Col lg={4}>
-              <div className="d-flex align-items-center gap-2">
-                <span className="badge rounded-3" style={{ background: theme.grad, color: "#fff" }}>Trusted by</span>
-                <span className="small" style={subText}>teams who value speed, clarity & results</span>
+        return (
+          <div
+            key={idx}
+            className="kpiCard"
+            style={{
+              position: "relative",
+              borderRadius: 16,
+              background: "#fff",
+              padding: "18px 18px 18px 18px",
+              boxShadow: "0 10px 26px rgba(11,18,32,.06)",
+              border: `1.5px solid ${theme.line}`,
+              display: "grid",
+              gridTemplateColumns: "1fr 120px",
+              gap: 14,
+              alignItems: "center",
+            }}
+          >
+            {/* Left: icon + values */}
+            <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+              <div
+                style={{
+                  width: 44,
+                  height: 44,
+                  borderRadius: 12,
+                  background: theme.grad,
+                  color: "#fff",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  boxShadow: "0 6px 16px rgba(124,58,237,.28)",
+                  flexShrink: 0,
+                }}
+              >
+                <i className={`bi ${i.icon}`} />
               </div>
-            </Col>
-            <Col lg={8}>
-              <div className="d-flex flex-wrap justify-content-lg-end gap-4">
-                {brands.map(([name, seed]) => (
-                  <div key={name} className="d-flex align-items-center gap-2 brand-chip">
-                    <div
-                      style={{
-                        width: 28, height: 28, borderRadius: 8,
-                        background: `url(https://picsum.photos/seed/brand${seed}/100/100) center/cover`,
-                        border: "1px solid #ecebfd",
-                        filter: "grayscale(100%)",
-                        opacity: .8,
-                        transition: "filter .25s ease, opacity .25s ease"
-                      }}
-                      className="brand-logo"
-                    />
-                    <span className="small fw-medium" style={{ color: theme.ink }}>{name}</span>
+              <div>
+                <div
+                  style={{
+                    fontWeight: 800,
+                    fontSize: 20,
+                    letterSpacing: "-.3px",
+                    color: "#0b1220",
+                  }}
+                >
+                  {i.k}
+                </div>
+                <div style={{ color: theme.sub, fontSize: 13 }}>{i.v}</div>
+              </div>
+            </div>
+
+            {/* Right: animated mini bar chart */}
+            <div className="kpiBarsWrap" style={{ position: "relative" }}>
+              <div
+                className="kpiBars"
+                style={{
+                  height: 64,
+                  display: "flex",
+                  alignItems: "flex-end",
+                  justifyContent: "space-between",
+                  gap: 8,
+                  paddingLeft: 2,
+                  position: "relative",
+                }}
+              >
+                {bars.map((h, j) => (
+                  <span
+                    key={j}
+                    className="kpiBar"
+                    style={{
+                      width: 10,
+                      height: `${h}%`,
+                      background:
+                        "linear-gradient(180deg, rgba(124,58,237,1), rgba(59,130,246,1))",
+                      borderRadius: 6,
+                      transformOrigin: "bottom",
+                      animation: "kpiGrow .65s ease-out both",
+                      animationDelay: `${j * 90}ms`,
+                      boxShadow: "0 4px 10px rgba(59,130,246,.25)",
+                    }}
+                  />
+                ))}
+
+                {/* gentle shine */}
+                <div
+                  className="kpiGlow"
+                  style={{
+                    position: "absolute",
+                    inset: 0,
+                    borderRadius: 10,
+                    pointerEvents: "none",
+                    background:
+                      "radial-gradient(120% 80% at 80% 20%, rgba(124,58,237,.12), transparent 60%)",
+                    animation: "kpiGlow 3s linear infinite",
+                  }}
+                />
+              </div>
+            </div>
+
+            {/* vertical split to avoid “vacant” feel */}
+            <div
+              style={{
+                position: "absolute",
+                top: 10,
+                bottom: 10,
+                left: "calc(100% - 120px)",
+                width: 1.5,
+                background: theme.line,
+                opacity: 0.85,
+              }}
+            />
+
+            {/* delta chip (auto) */}
+            <div
+              className={`deltaChip ${up ? "up" : "down"}`}
+              style={{
+                position: "absolute",
+                top: 10,
+                right: 10,
+                fontSize: 12,
+                padding: "4px 8px",
+                borderRadius: 999,
+                color: "#fff",
+                display: "flex",
+                alignItems: "center",
+                gap: 6,
+                background: up ? "#10b981" : "#ef4444",
+                boxShadow: "0 6px 16px rgba(0,0,0,.12)",
+              }}
+              aria-label="period delta"
+              title="Change vs baseline"
+            >
+              <i className={`bi ${up ? "bi-arrow-up-right" : "bi-arrow-down-right"}`} />
+              {up ? "+" : ""}
+              {Math.abs(delta)}%
+            </div>
+          </div>
+        );
+      })}
+    </div>
+
+    {/* Local styles for animation & motion prefs */}
+    <style>{`
+      .kpiCard { transition: transform .18s ease, box-shadow .18s ease; }
+      .kpiCard:hover { transform: translateY(-2px); box-shadow: 0 14px 34px rgba(11,18,32,.10); }
+
+      @keyframes kpiGrow {
+        from { transform: scaleY(0.1); opacity: .6; }
+        to   { transform: scaleY(1);   opacity: 1;  }
+      }
+      @keyframes kpiGlow {
+        0% { opacity: .06; }
+        50% { opacity: .12; }
+        100% { opacity: .06; }
+      }
+
+      @media (max-width: 991.98px) {
+        .kpiCard { grid-template-columns: 1fr; }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .kpiBar, .kpiGlow { animation: none !important; }
+        .kpiCard { transition: none !important; }
+      }
+    `}</style>
+  </Container>
+</section>
+
+
+
+      {/* —————————— Solutions: asymmetric grid (new) —————————— */}
+     <section
+  style={{
+    ...s.section,
+    background: "#0f172a",
+    padding: "76px 0",
+    position: "relative",
+    overflow: "hidden",
+  }}
+>
+  {/* Ambient gradient glows */}
+  <div style={{
+    position:"absolute", top:-120, left:-100, width:380, height:380, borderRadius:"50%",
+    background:"radial-gradient(circle at 30% 30%, rgba(124,58,237,.35), transparent 70%)",
+    filter:"blur(100px)", pointerEvents:"none"
+  }}/>
+  <div style={{
+    position:"absolute", bottom:-140, right:-120, width:340, height:340, borderRadius:"50%",
+    background:"radial-gradient(circle at 70% 70%, rgba(59,130,246,.35), transparent 70%)",
+    filter:"blur(90px)", pointerEvents:"none"
+  }}/>
+
+  <Container>
+    <Header
+  eyebrow="Solutions"
+  title={<span style={{ color: "#f1f5f6ff" }}>Pick a pod. Or stack them.</span>}
+  sub={<span style={{ color: "#fdfcfeff" }}>Productized growth systems designed to ship fast and compound over time.</span>}
+/>
+
+
+    {/* UNIFORM GRID: 2 columns × 3 rows = 6 cards */}
+    <Row className="g-4 align-items-stretch">
+      {[...solutions, {
+        key: "analytics",
+        tag: "Analytics",
+        icon: "bi-bar-chart-line",
+        title: "Analytics & Attribution",
+        desc: "GA4 + server-side tagging + clean models for confident decisions.",
+        bullets: ["Event spec", "S2S tagging", "Cohorts / LTV"],
+        img: "https://picsum.photos/seed/909/1200/800"
+      }].slice(0, 6).map((sol, i) => (
+        <Col lg={6} key={sol.key || i}>
+          <div
+            className="solution-card uniform"
+            style={{
+              display: "grid",
+              gridTemplateColumns: "1fr 1fr",
+              borderRadius: 18,
+              background:
+                "linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.06)) padding-box, linear-gradient(135deg,#7c3aed,#3b82f6) border-box",
+              border: "1px solid transparent",
+              color: "#fff",
+              overflow: "hidden",
+              boxShadow: "0 16px 40px rgba(0,0,0,.35)",
+              height: "100%",
+              transform: "translateY(0)",
+              transition: "transform .28s ease, box-shadow .28s ease",
+            }}
+          >
+            {/* Text column */}
+            <div style={{ padding: 20, display:"flex", flexDirection:"column" }}>
+              {/* Meta row — high contrast */}
+              <div className="d-inline-flex align-items-center gap-2 mb-1">
+                <span style={{
+                  fontWeight:700, fontSize:12, padding:"6px 10px", borderRadius:999,
+                  background:"#ffffff", color:"#0f172a"
+                }}>{sol.tag}</span>
+                <span style={{
+                  width:28, height:28, borderRadius:8,
+                  background:"linear-gradient(90deg,#7c3aed,#4761ff)",
+                  display:"flex", alignItems:"center", justifyContent:"center",
+                  color:"#fff"
+                }}>
+                  <i className={`bi ${sol.icon}`} />
+                </span>
+                <span style={{ fontSize:12, fontWeight:700, color:"#fff" }}>Pod</span>
+              </div>
+
+              <h5 style={{ margin:"10px 0 6px", letterSpacing:"-.2px", fontWeight:800, color:"#fff" }}>
+                {sol.title}
+              </h5>
+              <p style={{ margin:"0 0 10px", color:"#fff", fontSize:14 }}>
+                {sol.desc}
+              </p>
+
+              <div style={{
+                height:1, background:"linear-gradient(90deg, rgba(255,255,255,.6), transparent)",
+                margin:"8px 0 10px"
+              }} />
+
+              {/* Bullets */}
+              <div style={{ display:"flex", flexWrap:"wrap", gap:6, marginBottom:10 }}>
+                {sol.bullets.map((b, j) => (
+                  <span key={j} style={{
+                    fontSize:12, padding:"6px 10px", borderRadius:999,
+                    border:"1px solid rgba(255,255,255,.9)", color:"#fff",
+                    background:"rgba(255,255,255,.12)"
+                  }}>{b}</span>
+                ))}
+              </div>
+
+              {/* CTA */}
+              <div style={{ marginTop:"auto", display:"flex", gap:10 }}>
+                <Button
+                  size="sm"
+                  onClick={() => setOpen(sol)}
+                  style={{
+                    background:"linear-gradient(90deg,#7c3aed,#4761ff)",
+                    border:"none",
+                    boxShadow:"0 10px 22px rgba(71,97,255,.35)"
+                  }}
+                >
+                  Details <i className="bi bi-arrow-right ms-1" />
+                </Button>
+                <Button size="sm" variant="outline-light" href="#quote" style={{ borderColor:"#fff", color:"#fff" }}>
+                  Start
+                </Button>
+              </div>
+            </div>
+
+            {/* Image column with glow + shimmer */}
+            <div className="position-relative">
+              <div className="ratio ratio-16x9 h-100">
+                <Image
+                  src={sol.img}
+                  alt={sol.title}
+                  className="w-100 h-100 sol-img"
+                  style={{ objectFit: "cover", transition:"transform .45s ease", willChange:"transform" }}
+                />
+              </div>
+              <div style={{
+                position:"absolute", top:-30, right:-30, width:150, height:150, borderRadius:"50%",
+                background:"radial-gradient(circle at 30% 30%, rgba(124,58,237,.45), transparent 60%)",
+                filter:"blur(44px)", pointerEvents:"none"
+              }}/>
+              <div className="sol-shimmer" style={{
+                position:"absolute", inset:0, pointerEvents:"none", opacity:.14,
+                background:"linear-gradient(110deg, transparent 0%, rgba(255,255,255,.30) 35%, transparent 70%)",
+                transform:"translateX(-120%)", animation:"solShimmer 3s linear infinite"
+              }}/>
+            </div>
+          </div>
+        </Col>
+      ))}
+    </Row>
+  </Container>
+
+  {/* Hover & motion styles (scoped) */}
+  <style>{`
+    .solution-card.uniform:hover { transform: translateY(-6px); box-shadow: 0 22px 56px rgba(59,130,246,.35); }
+    .solution-card.uniform:hover .sol-img { transform: scale(1.06); }
+
+    @keyframes solShimmer { to { transform: translateX(120%); } }
+
+    /* Keep cards uniform on mobile */
+    @media (max-width: 991.98px) {
+      .solution-card.uniform { grid-template-columns: 1fr !important; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .solution-card.uniform, .sol-img, .sol-shimmer { animation: none !important; transition: none !important; }
+    }
+  `}</style>
+</section>
+
+
+
+
+      {/* —————————— Industries: slim carousel rail —————————— */}
+      
+
+
+      {/* —————————— Process: vertical timeline —————————— */}
+      <section style={s.section}>
+        <Container>
+          <Header eyebrow="Process" title="Ship. Measure. Optimize. Repeat." />
+          <Row className="justify-content-center">
+            <Col lg={10}>
+              <div style={{ position: "relative", paddingLeft: 26 }}>
+                <div style={{
+                  position: "absolute", left: 8, top: 0, bottom: 0, width: 2,
+                  background: theme.grad, opacity: 0.35, borderRadius: 2
+                }} />
+                {[
+                  { h: "Audit & Plan", p: "90-day plan mapped to revenue KPIs + quick wins." },
+                  { h: "Build & Ship", p: "Weekly increments—pages, ads, creatives, tracking." },
+                  { h: "Measure & Learn", p: "Clean dashboards and readouts. What moved why." },
+                  { h: "Optimize & Scale", p: "A/Bs, budget shifts, creative loops, CRO." },
+                ].map((step, i) => (
+                  <div key={i} style={{ marginBottom: 16, paddingLeft: 14 }}>
+                    <div style={{
+                      width: 14, height: 14, borderRadius: 999,
+                      background: "white", border: `3px solid ${theme.brandB}`,
+                      position: "absolute", left: 1, marginTop: 6
+                    }} />
+                    <div className="fw-semibold">{step.h}</div>
+                    <div style={{ color: theme.sub, fontSize: 14 }}>{step.p}</div>
                   </div>
                 ))}
               </div>
@@ -273,96 +508,79 @@ export default function PostHeroSection() {
         </Container>
       </section>
 
-      {/* KPIs */}
-      <section style={section}>
-        <DecorativeOrbs />
+      {/* —————————— Pricing: compact comparison table (new) —————————— */}
+      <section style={sAlt}>
         <Container>
-          <Row className="g-3 text-center">
-            {kpis.map((k, i) => (
-              <Col xs={6} md={3} key={i}>
-                <Card style={glassCard}>
-                  <Card.Body className="py-3">
-                    <i className={`bi ${k.icon} fs-5`} />
-                    <div className="small mt-1" style={subText}>{k.label}</div>
-                    <div className="fs-5 fw-semibold" style={{ background: theme.grad, WebkitBackgroundClip: "text", color: "transparent" }}>
-                      {k.value}
-                    </div>
-                    <div className="d-flex justify-content-center mt-1">
-                      <Spark data={k.trend} />
-                    </div>
-                  </Card.Body>
-                </Card>
-              </Col>
-            ))}
-          </Row>
-        </Container>
-      </section>
+          <Header eyebrow="Plans" title="Pods that scale with you" sub="Start lean. Add pods as ROI compounds." />
+          <div className="d-flex justify-content-center mb-3">
+            <div style={{ border: `1px solid ${theme.line}`, borderRadius: 999, padding: 6, background: "#fff" }}>
+              <Button size="sm" variant={billing==="Monthly" ? "dark":"light"} onClick={()=>setBilling("Monthly")} className="me-1">Monthly</Button>
+              <Button size="sm" variant={billing!=="Monthly" ? "dark":"light"} onClick={()=>setBilling("Yearly (-15%)")}>Yearly −15%</Button>
+            </div>
+          </div>
 
-      {/* SERVICES */}
-      <section style={sectionAlt}>
-        <SectionHeader eyebrow="What we do" title="End-to-end growth services" subtitle="Build, grow, and measure—one accountable team." />
-        <Container>
-          <Row className="g-4">
-            {services.map((s, i) => (
-              <Col md={6} lg={4} key={i}>
-                <Card
-                  style={{ ...gradBorder, overflow: "hidden", boxShadow: "0 16px 40px rgba(2,6,23,0.08)" }}
-                  onMouseEnter={() => setHoverIdx(i)}
-                  onMouseLeave={() => setHoverIdx(null)}
-                  className="h-100 reveal"
-                >
-                  <div className="ratio ratio-16x9">
-                    <Image
-                      src={s.img}
-                      alt={s.title}
-                      className="w-100 h-100"
-                      style={{ objectFit: "cover", transform: hoverIdx===i ? "scale(1.03)" : "scale(1)", transition: "transform .3s ease" }}
-                    />
-                  </div>
-                  <Card.Body>
-                    <div className="d-flex align-items-center gap-2">
-                      <div className="d-inline-flex align-items-center justify-content-center text-white"
-                           style={{ background: theme.grad, borderRadius: 10, padding: 8 }}>
-                        <i className={`bi ${s.icon}`} />
+          <div style={{ overflowX: "auto", border: `1px solid ${theme.line}`, borderRadius: 12, background: "#fff" }}>
+            <Table responsive borderless className="mb-0 align-middle">
+              <thead>
+                <tr style={{ borderBottom: `1px solid ${theme.line}` }}>
+                  <th className="py-3">Plan</th>
+                  {plans.map((p, i) => (
+                    <th key={i} className="py-3 text-center">
+                      <div className="fw-semibold">{p.name}</div>
+                      <div style={{ background: theme.grad, WebkitBackgroundClip: "text", color: "transparent", fontWeight: 800, fontSize: 18 }}>
+                        {priceLabel(p.price)}
                       </div>
-                      <Card.Title className="mb-0 fs-5">{s.title}</Card.Title>
-                    </div>
-                    <Card.Text className="small mt-2" style={subText}>{s.desc}</Card.Text>
-                    <Stack direction="horizontal" gap={2} className="flex-wrap">
-                      {s.bullets.map((b, idx) => <span key={idx} style={chip}>{b}</span>)}
-                    </Stack>
-                    <div className="d-flex gap-2 mt-3">
-                      <Button size="sm" style={gradBtn} onClick={() => setServiceModal(s)}>
-                        Learn more <i className="bi bi-arrow-right ms-1" />
-                      </Button>
-                      <a href="#quote" className="btn btn-sm" style={ghostBtn}>Get started</a>
-                    </div>
-                  </Card.Body>
-                </Card>
-              </Col>
-            ))}
-          </Row>
+                      {p.popular && <span className="badge text-bg-primary mt-1">Popular</span>}
+                    </th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {[
+                  "Channels / Pods", "CRO Tests", "Lifecycle (Email/SMS)", "Reporting", "Support"
+                ].map((row, ridx) => (
+                  <tr key={ridx} style={{ borderTop: `1px solid ${theme.line}` }}>
+                    <td className="py-3">{row}</td>
+                    {plans.map((p, i) => (
+                      <td key={i} className="py-3 text-center">
+                        {renderMatrix(row, p)}
+                      </td>
+                    ))}
+                  </tr>
+                ))}
+                <tr style={{ borderTop: `1px solid ${theme.line}` }}>
+                  <td />
+                  {plans.map((p, i) => (
+                    <td key={i} className="py-3 text-center">
+                      <a href="#quote" className="btn btn-dark btn-sm">Choose {p.name}</a>
+                    </td>
+                  ))}
+                </tr>
+              </tbody>
+            </Table>
+          </div>
         </Container>
-        <Divider />
       </section>
 
-      {/* SHOWCASE */}
-      <section style={section}>
-        <SectionHeader eyebrow="Work" title="Recent highlights" />
+      {/* —————————— Playbooks quick row —————————— */}
+      <section style={s.section}>
         <Container>
-          <Row className="g-4">
-            {showcase.map((it, i) => (
-              <Col md={6} lg={4} key={i}>
-                <div style={{ position: "relative", borderRadius: 16, overflow: "hidden", border: "1px solid #ecebfd", boxShadow: "0 20px 46px rgba(2,6,23,.18)" }} className="reveal">
-                  <Image src={it.img} alt={it.title} className="w-100" style={{ display: "block" }} />
-                  <div className="hover-overlay-pro">
-                    <div style={{ ...darkGlass, padding: 14 }}>
-                      <div className="small text-uppercase">{it.tag}</div>
-                      <div className="fw-semibold">{it.title}</div>
-                      <a href="#quote" className="btn btn-sm mt-2" style={gradBtn}>
-                        Request a similar build
-                      </a>
-                    </div>
+          <Header eyebrow="Playbooks" title="Tools that make execution simple" />
+          <Row className="g-3">
+            {[
+              { t: "Traffic Acceleration OS", tag: "Playbook" },
+              { t: "Conversion Engine Sprints", tag: "Toolkit" },
+              { t: "AI Creative Matrix", tag: "Template" },
+            ].map((p, i) => (
+              <Col lg={4} key={i}>
+                <div style={{
+                  border: `1px solid ${theme.line}`, background: "#fff",
+                  borderRadius: 14, padding: 16, height: "100%"
+                }}>
+                  <Badge bg="light" text="dark" className="mb-2">{p.tag}</Badge>
+                  <div className="fw-semibold">{p.t}</div>
+                  <div className="mt-3">
+                    <a href="#quote" style={{ ...pill, display: "inline-block" }}>Request a copy</a>
                   </div>
                 </div>
               </Col>
@@ -371,108 +589,104 @@ export default function PostHeroSection() {
         </Container>
       </section>
 
-      {/* PROCESS (icons and content center aligned in a row) */}
-      <section style={sectionAlt}>
-        <SectionHeader eyebrow="Process" title="Simple, fast, accountable" />
+      {/* —————————— Testimonials: slim rail —————————— */}
+      <section style={sAlt}>
         <Container>
-          <Row className="g-4 justify-content-center">
-            {steps.map((s, i) => (
-              <Col md={6} lg={3} key={i}>
-                <Card
-                  style={{
-                    borderRadius: 16,
-                    background: "#f6f7f9",
-                    border: "1px solid #ecebfd",
-                    boxShadow: "0 2px 12px rgba(44,62,80,0.07)",
-                    minHeight: 120,
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    padding: "24px 12px",
-                    textAlign: "left"
-                  }}
-                  className="h-100"
-                >
-                  <div className="d-flex align-items-center justify-content-center w-100">
-                    <div
-                      className="d-inline-flex align-items-center justify-content-center me-3 flex-shrink-0"
-                      style={{
-                        background: theme.grad,
-                        borderRadius: 12,
-                        width: 56,
-                        height: 56,
-                        color: "#fff",
-                        fontSize: 28
-                      }}
-                    >
-                      <i className={`bi ${s.icon}`} />
-                    </div>
-                    <div>
-                      <h6 className="mb-2 fw-semibold" style={{ fontSize: "1.1rem" }}>{s.title}</h6>
-                      <p className="small mb-0" style={{ color: "#6b7280" }}>{s.text}</p>
-                    </div>
+          <Header eyebrow="What clients say" title="Signal over noise." />
+          <Row className="g-3">
+            {testimonials.map((t, i) => (
+              <Col lg={4} key={i}>
+                <blockquote style={{
+                  background: "#fff", border: `1px solid ${theme.line}`,
+                  borderRadius: 14, padding: 16, height: "100%"
+                }}>
+                  <div style={{ color: theme.sub }}>&ldquo;{t.text}&rdquo;</div>
+                  <div className="mt-3">
+                    <span className="fw-semibold">{t.name}</span>
+                    <span className="ms-1" style={{ color: theme.sub }}>— {t.role}</span>
                   </div>
-                </Card>
+                </blockquote>
               </Col>
             ))}
           </Row>
         </Container>
-        <Divider />
       </section>
 
-      {/* PRICING */}
-      <section style={section}>
-        <SectionHeader eyebrow="Pricing" title="Plans that scale with you" subtitle="Transparent, flexible—pick your lane." />
+      {/* —————————— Quote band (dark) —————————— */}
+      <section id="quote" style={{ ...s.section, background: theme.ink }}>
         <Container>
-          <div className="d-flex justify-content-center mb-4">
-            <div className="d-inline-flex align-items-center gap-2 px-2 py-1 rounded-5" style={{ ...glassCard, padding: 8 }}>
-              <Button size="sm" variant={billing==="Monthly"?"dark":"outline-secondary"} onClick={()=>setBilling("Monthly")}>Monthly</Button>
-              <Button size="sm" variant={billing!=="Monthly"?"dark":"outline-secondary"} onClick={()=>setBilling("Yearly (-15%)")}>
-                Yearly <span className="badge text-bg-success ms-1">-15%</span>
-              </Button>
-            </div>
-          </div>
-
-          <Row className="g-4">
-            {plans.map((p, i) => (
-              <Col md={6} lg={4} key={i}>
-                <Card
-                  style={{
-                    ...gradBorder,
-                    background: "linear-gradient(#fff,#fff) padding-box, linear-gradient(135deg, #7c3aed 0%, #4761ff 50%, #ff4d8d 100%) border-box",
-                    boxShadow: p.popular ? "0 20px 54px rgba(124,58,237,.25)" : "0 14px 46px rgba(2,6,23,.12)",
-                  }}
-                  className="h-100 reveal"
-                >
-                  <Card.Body>
-                    {p.popular && (
-                      <span className="badge rounded-pill mb-2" style={{ background: theme.grad, color: "#fff" }}>
-                        Most Popular
-                      </span>
-                    )}
-                    <Card.Title className="fs-5">{p.name}</Card.Title>
-                    <div className="h2 mt-1" style={{ background: theme.gradAlt, WebkitBackgroundClip: "text", color: "transparent" }}>
-                      {priceLabel(p.m)}
+          <Row className="g-3 align-items-stretch">
+            <Col lg={6}>
+              <Card style={{ background: "transparent", color: "#fff", border: `1px solid rgba(255,255,255,.15)`, borderRadius: 16 }} className="h-100">
+                <Card.Body>
+                  <h3 className="fw-semibold">Request a Quote</h3>
+                  <p className="small" style={{ color: "rgba(255,255,255,.75)" }}>Tell us your goals—get a plan, timelines, and pricing.</p>
+                  <Form onSubmit={(e)=>{e.preventDefault(); setToast("Thanks! We’ll reply within 24 hours."); setTimeout(()=>setToast(""),2500); e.currentTarget.reset();}}>
+                    <Row className="g-3">
+                      <Col sm={6}><Form.Group><Form.Label className="small">Name</Form.Label><Form.Control required/></Form.Group></Col>
+                      <Col sm={6}><Form.Group><Form.Label className="small">Work email</Form.Label><Form.Control type="email" required/></Form.Group></Col>
+                      <Col xs={12}><Form.Group><Form.Label className="small">Website / App</Form.Label><Form.Control type="url" placeholder="https://yourdomain.com" required/></Form.Group></Col>
+                      <Col sm={6}>
+                        <Form.Group>
+                          <Form.Label className="small">Solution</Form.Label>
+                          <Form.Select defaultValue="Traffic Acceleration">
+                            {["Traffic Acceleration","Conversion Engine","AI-Powered Marketing","Retention & Loyalty","Influencer & Community"].map(x => <option key={x}>{x}</option>)}
+                          </Form.Select>
+                        </Form.Group>
+                      </Col>
+                      <Col sm={6}><Form.Group><Form.Label className="small">Monthly budget (₹)</Form.Label><Form.Control type="number" min={0}/></Form.Group></Col>
+                      <Col xs={12}><Form.Group><Form.Label className="small">Notes</Form.Label><Form.Control as="textarea" rows={3} placeholder="Goals, timeline, anything else…"/></Form.Group></Col>
+                    </Row>
+                    <div className="d-flex gap-2 mt-3">
+                      <Button type="submit" style={{ background: theme.grad, border: "none" }}>
+                        Request quote <i className="bi bi-arrow-right ms-1"/>
+                      </Button>
+                      <Button variant="outline-light" onClick={()=>{setToast("Company profile downloaded."); setTimeout(()=>setToast(""),1800);}}>
+                        Download company profile
+                      </Button>
                     </div>
-                    <ul className="small mt-2" style={{ color: "#475569" }}>
-                      {p.feat.map((f, idx)=>(
-                        <li key={idx} className="mb-1"><i className="bi bi-check2-circle text-success me-2" />{f}</li>
-                      ))}
-                    </ul>
-                    <a href="#quote" className="btn btn-dark">Choose plan</a>
-                  </Card.Body>
-                </Card>
-              </Col>
-            ))}
+                  </Form>
+                </Card.Body>
+              </Card>
+            </Col>
+            <Col lg={6}>
+              <Card style={{ background: "#fff", border: `1px solid ${theme.line}`, borderRadius: 16 }} className="h-100">
+                <Card.Body>
+                  <h5 className="fw-semibold">Why choose Growth Co.?</h5>
+                  <ul className="small mt-2" style={{ color: theme.sub }}>
+                    <li className="mb-2"><i className="bi bi-lightning-charge me-2"/>Weekly ships across pages, ads, creatives, and tracking.</li>
+                    <li className="mb-2"><i className="bi bi-bullseye me-2"/>Revenue-first: actions mapped to KPIs.</li>
+                    <li className="mb-2"><i className="bi bi-diagram-3 me-2"/>Pods you can stack as ROI compounds.</li>
+                    <li className="mb-2"><i className="bi bi-shield-check me-2"/>QA for code, data, and deliverability.</li>
+                  </ul>
+                  <div className="small text-uppercase" style={{ opacity: .7 }}>Average 90-day outcomes</div>
+                  <Table bordered responsive size="sm" className="mt-2 mb-0">
+                    <thead><tr><th>Metric</th><th>Baseline</th><th>Result</th></tr></thead>
+                    <tbody>
+                      <tr><td>Core Web Vitals</td><td>58%</td><td>92%</td></tr>
+                      <tr><td>Conversion rate</td><td>1.8%</td><td>2.9%</td></tr>
+                      <tr><td>ROAS</td><td>1.6×</td><td>3.0×</td></tr>
+                      <tr><td>Email revenue share</td><td>8%</td><td>18%</td></tr>
+                    </tbody>
+                  </Table>
+                </Card.Body>
+              </Card>
+            </Col>
           </Row>
+
+          {toast && (
+            <div style={{ position: "fixed", bottom: 14, right: 14, zIndex: 1060 }}>
+              <Alert variant="success" className="shadow-sm border">{toast}</Alert>
+            </div>
+          )}
         </Container>
       </section>
 
-      {/* FAQ */}
-      <section style={sectionAlt}>
-        <SectionHeader eyebrow="FAQ" title="Answers to common questions" />
+      {/* —————————— FAQ —————————— */}
+      <section style={s.section}>
         <Container>
-          <Accordion className="mx-auto" style={{ maxWidth: 960 }}>
+          <Header eyebrow="FAQ" title="Quick answers" />
+          <Accordion className="mx-auto" style={{ maxWidth: 920 }}>
             {faqs.map((f, i) => (
               <Accordion.Item eventKey={String(i)} key={i}>
                 <Accordion.Header>{f.q}</Accordion.Header>
@@ -483,375 +697,152 @@ export default function PostHeroSection() {
         </Container>
       </section>
 
-      {/* ===================== 🔥 NEW SECTIONS START ===================== */}
-
-      {/* RESULTS MARQUEE (auto-scrolling wins) */}
-      <section style={{ ...section, padding: "32px 0" }}>
-        <Container>
-          <div className="marquee-wrap">
-            <div className="marquee-track">
-              {[...marqueeWins, ...marqueeWins].map((w, i) => (
-                <div key={i} className="marquee-item">
-                  <span className="kpi-val">{w.k}</span>
-                  <span className="kpi-lbl">{w.v}</span>
-                  <span className="kpi-sub">{w.s}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </Container>
-      </section>
-
-      {/* TESTIMONIALS (auto-play, pause on hover) */}
-      <section style={sectionAlt}>
-        <SectionHeader eyebrow="What clients say" title="Testimonials" />
-        <Container>
-          <Carousel className="reveal" interval={4500} pause="hover" controls indicators>
-            {testimonials.map((t, i) => (
-              <Carousel.Item key={i}>
-                <Row className="justify-content-center">
-                  <Col md={9} lg={8}>
-                    <Card style={glassCard}>
-                      <Card.Body className="p-4">
-                        <div className="d-flex align-items-center gap-3">
-                          <Image roundedCircle src={t.img} alt={t.name} width={60} height={60} />
-                          <div>
-                            <div className="fw-semibold">{t.name}</div>
-                            <div className="small text-secondary">{t.role}</div>
-                          </div>
-                        </div>
-                        <p className="mt-3 mb-0 fs-6" style={{ color: "#111827" }}>
-                          “{t.quote}”
-                        </p>
-                      </Card.Body>
-                    </Card>
-                  </Col>
-                </Row>
-              </Carousel.Item>
-            ))}
-          </Carousel>
-        </Container>
-      </section>
-
-      {/* CASE STUDIES SPLIT */}
-      <section style={section}>
-        <SectionHeader eyebrow="Case studies" title="Proven playbooks" subtitle="A snapshot of recent outcomes." />
-        <Container>
-          <Row className="g-4">
-            {studies.map((c, i) => (
-              <Col md={6} lg={4} key={i}>
-                <Card className="h-100 cs-card reveal" style={{ border: "1px solid #ecebfd", borderRadius: 16, overflow: "hidden" }}>
-                  <div className="ratio ratio-16x9">
-                    <Image src={c.img} alt={c.title} className="w-100 h-100" style={{ objectFit: "cover" }} />
-                  </div>
-                  <Card.Body>
-                    <div className="small text-uppercase text-secondary">{c.tag}</div>
-                    <h6 className="mt-1">{c.title}</h6>
-                    <ul className="small text-secondary mb-3">
-                      {c.bullets.map((b, idx) => <li key={idx}>{b}</li>)}
-                    </ul>
-                    <a href="#quote" className="btn btn-sm btn-dark">
-                      Get the playbook
-                    </a>
-                  </Card.Body>
-                </Card>
-              </Col>
-            ))}
-          </Row>
-        </Container>
-      </section>
-
-      {/* INSIGHTS / BLOG GRID */}
-      <section style={sectionAlt}>
-        <SectionHeader eyebrow="Insights" title="Ideas & resources" />
-        <Container>
-          <Row className="g-4">
-            {posts.map((p, i) => (
-              <Col md={6} lg={4} key={i}>
-                <Card className="reveal blog-card" style={{ ...glassCard, overflow: "hidden" }}>
-                  <div className="ratio ratio-16x9">
-                    <Image src={p.img} alt={p.title} className="w-100 h-100" style={{ objectFit: "cover" }} />
-                  </div>
-                  <Card.Body>
-                    <Badge bg="light" text="dark" className="mb-2">{p.tag}</Badge>
-                    <h6 className="mb-2">{p.title}</h6>
-                    <a href="#quote" className="btn btn-sm" style={ghostBtn}>
-                      Request a PDF copy
-                    </a>
-                  </Card.Body>
-                </Card>
-              </Col>
-            ))}
-          </Row>
-        </Container>
-      </section>
-
-      {/* ===================== 🔥 NEW SECTIONS END ===================== */}
-
-      {/* QUOTE (anchor for hero button) — premium dark block */}
-      <section id="quote" style={{ ...section, background: theme.darkBg }}>
-        <NoiseOverlay />
-        <Container>
-          <Row className="g-4 align-items-stretch">
-            <Col lg={6}>
-              <Card style={darkGlass} className="h-100">
-                <Card.Body>
-                  <h3 className="fw-semibold">Request a Quote</h3>
-                  <p className="small" style={{ color: "rgba(255,255,255,.72)" }}>
-                    Share your goals—get a plan, timelines, and pricing.
-                  </p>
-                  <Form
-                    onSubmit={(e) => {
-                      e.preventDefault();
-                      setQuoteMsg("Thanks! We’ll get back within 24 hours.");
-                      setTimeout(() => setQuoteMsg(""), 3000);
-                      e.currentTarget.reset();
-                    }}
-                  >
-                    <Row className="g-3">
-                      <Col sm={6}><Form.Group><Form.Label className="small">Name</Form.Label><Form.Control required /></Form.Group></Col>
-                      <Col sm={6}><Form.Group><Form.Label className="small">Work email</Form.Label><Form.Control type="email" required /></Form.Group></Col>
-                      <Col xs={12}><Form.Group><Form.Label className="small">Website / App</Form.Label><Form.Control type="url" placeholder="https://yourdomain.com" required /></Form.Group></Col>
-                      <Col sm={6}>
-                        <Form.Group>
-                          <Form.Label className="small">Service</Form.Label>
-                          <Form.Select defaultValue="Web Development">
-                            {["Web Development","SEO","PPC","Email Marketing","Analytics","Creative"].map(s=><option key={s} value={s}>{s}</option>)}
-                          </Form.Select>
-                        </Form.Group>
-                      </Col>
-                      <Col sm={6}><Form.Group><Form.Label className="small">Monthly budget (₹)</Form.Label><Form.Control type="number" min={0} /></Form.Group></Col>
-                      <Col xs={12}><Form.Group><Form.Label className="small">Notes</Form.Label><Form.Control as="textarea" rows={3} placeholder="Goals, timeline, anything else…" /></Form.Group></Col>
-                    </Row>
-                    <div className="d-flex gap-2 mt-3">
-                      <Button type="submit" style={gradBtn}>Request quote <i className="bi bi-arrow-right ms-1" /></Button>
-                      <Button variant="outline-light" onClick={() => { setQuoteMsg("Company profile downloaded."); setTimeout(()=>setQuoteMsg(""),2200); }}>
-                        Download company profile
-                      </Button>
-                    </div>
-                  </Form>
-                </Card.Body>
-              </Card>
-            </Col>
-
-            <Col lg={6}>
-              <Card style={{ ...glassCard, background: "linear-gradient(180deg, rgba(255,255,255,.75), rgba(255,255,255,.6))", border: "1px solid rgba(255,255,255,.5)" }} className="h-100">
-                <Card.Body>
-                  <h5 className="fw-semibold">Why choose DigiSpark?</h5>
-                  <ul className="small mt-2">
-                    <li className="mb-2"><i className="bi bi-lightning-charge me-2" />Fast shipping: weekly increments, no long waits.</li>
-                    <li className="mb-2"><i className="bi bi-bullseye me-2" />Revenue-first: everything mapped to KPIs.</li>
-                    <li className="mb-2"><i className="bi bi-diagram-3 me-2" />Full-stack: build, grow, and measure.</li>
-                    <li className="mb-2"><i className="bi bi-shield-check me-2" />Quality: code reviews, QA, and data validation.</li>
-                  </ul>
-                  <div className="mt-4">
-                    <div className="small text-uppercase" style={{ opacity: 0.7 }}>Average outcomes (90-day)</div>
-                    <Table bordered responsive size="sm" className="mt-2 mb-0">
-                      <thead>
-                        <tr><th>Metric</th><th>Baseline</th><th>Result</th></tr>
-                      </thead>
-                      <tbody>
-                        <tr><td>Site speed (CWV)</td><td>58%</td><td>92%</td></tr>
-                        <tr><td>Conversion rate</td><td>1.8%</td><td>2.9%</td></tr>
-                        <tr><td>ROAS</td><td>1.6×</td><td>3.0×</td></tr>
-                        <tr><td>Email revenue share</td><td>8%</td><td>18%</td></tr>
-                      </tbody>
-                    </Table>
-                  </div>
-                </Card.Body>
-              </Card>
-            </Col>
-          </Row>
-
-          {quoteMsg && (
-            <div style={{ position: "fixed", bottom: 12, right: 12, zIndex: 1060 }}>
-              <Alert variant="success" className="shadow-sm border">{quoteMsg}</Alert>
-            </div>
-          )}
-        </Container>
-      </section>
-
-      {/* SERVICE MODAL */}
-      <Modal show={!!serviceModal} onHide={() => setServiceModal(null)} centered>
-        <Modal.Header closeButton><Modal.Title>{serviceModal?.title}</Modal.Title></Modal.Header>
-        <Modal.Body>
-          <p className="mb-2">{serviceModal?.desc}</p>
-          <div className="mb-2">
-            {(serviceModal?.bullets || []).map((b, i) => (
-              <span key={i} style={{ ...chip, marginRight: 6, marginBottom: 6 }}>{b}</span>
-            ))}
-          </div>
-          <div className="ratio ratio-16x9">
-            <Image src={serviceModal?.img} alt={serviceModal?.title} className="w-100 h-100" style={{ objectFit: "cover" }} />
-          </div>
-        </Modal.Body>
-        <Modal.Footer>
-          <a href="#quote" className="btn btn-outline-secondary">Get started</a>
-          <Button onClick={() => setServiceModal(null)} style={gradBtn}>Close</Button>
-        </Modal.Footer>
-      </Modal>
-
-      {/* STICKY CONTACT BAR (dismissible) */}
-      {showSticky && (
-        <div className="sticky-bar">
+      {/* —————————— Sticky bottom promo —————————— */}
+      {sticky && (
+        <div style={{
+          position: "sticky", bottom: 0, zIndex: 1020,
+          background: theme.grad, color: "#fff", padding: "10px 0",
+          boxShadow: "0 -6px 18px rgba(2,6,23,.2)"
+        }}>
           <div className="container d-flex align-items-center justify-content-between gap-2">
             <div className="d-flex align-items-center gap-2">
-              <span className="pulse-dot" />
-              <span className="small">Free teardown: get a 10-point growth audit within 48h.</span>
+              <span style={{ width: 10, height: 10, background: "#22c55e", borderRadius: 999, display: "inline-block" }}/>
+              <span className="small">Free teardown: 10-point audit in 48h.</span>
             </div>
             <div className="d-flex align-items-center gap-2">
               <a href="#quote" className="btn btn-sm btn-light">Get Free Audit</a>
-              <CloseButton onClick={() => setShowSticky(false)} />
+              <CloseButton onClick={()=>setSticky(false)}/>
             </div>
           </div>
         </div>
       )}
 
-      {/* Local premium effects */}
-      <style>{`
-        .brand-chip:hover .brand-logo{ filter:none; opacity:1; }
-
-        .hover-overlay-pro{
-          position:absolute; inset:0; display:flex; align-items:flex-end; padding:12px;
-          background: radial-gradient(120% 80% at 80% 20%, rgba(0,0,0,.0), rgba(0,0,0,.55));
-          opacity:.0; transform: translateY(8px); transition: all .25s ease;
-          backdrop-filter: blur(2px);
-        }
-        .hover-overlay-pro:hover{ opacity:1; transform: translateY(0); }
-
-        /* process timeline accent inside cards */
-        .timeline-dot::before{
-          content:""; position:absolute; left:12px; top:-28px; bottom:-28px; width:2px;
-          background: linear-gradient(180deg, #7c3aed, #4761ff);
-          opacity:.4;
-        }
-
-        /* soft orbs for depth */
-        .orb { position:absolute; filter: blur(40px); opacity:.28; pointer-events:none; }
-        .orb.one { width:340px; height:340px; top:-80px; right:-60px; background: radial-gradient(circle at 30% 30%, #7c3aed, transparent 60%); }
-        .orb.two { width:300px; height:300px; bottom:-80px; left:-60px; background: radial-gradient(circle at 70% 70%, #4761ff, transparent 60%); }
-
-        /* subtle noise over dark */
-        .noise::after{
-          content:""; position:absolute; inset:0; pointer-events:none; opacity:.06;
-          background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="160" height="160" viewBox="0 0 40 40"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23n)" opacity="0.9"/></svg>');
-          mix-blend-mode: soft-light;
-        }
-
-        /* ===== New: Results marquee ===== */
-        .marquee-wrap{
-          overflow: hidden;
-          border: 1px solid #ecebfd;
-          border-radius: 14px;
-          background: #fff;
-          box-shadow: 0 8px 20px rgba(2,6,23,.06);
-        }
-        .marquee-track{
-          display: flex;
-          gap: 18px;
-          padding: 10px 14px;
-          animation: marquee 26s linear infinite;
-          will-change: transform;
-        }
-        .marquee-item{
-          display:flex; align-items:center; gap:8px;
-          padding: 10px 14px;
-          border: 1px solid #ecebfd;
-          border-radius: 999px;
-          background: linear-gradient(#fff,#fff) padding-box, linear-gradient(135deg,#7c3aed,#4761ff) border-box;
-        }
-        .marquee-item .kpi-val{ font-weight:700; }
-        .marquee-item .kpi-lbl{ color:#334155; }
-        .marquee-item .kpi-sub{ color:#64748b; font-size:.82rem; }
-        @keyframes marquee {
-          0% { transform: translateX(0); }
-          100% { transform: translateX(-50%); }
-        }
-
-        /* ===== New: reveal on scroll ===== */
-        .reveal { opacity: 0; transform: translateY(16px); transition: opacity .5s ease, transform .5s ease; }
-        .reveal.visible { opacity: 1; transform: none; }
-
-        /* Blog/case hover */
-        .blog-card:hover, .cs-card:hover { transform: translateY(-4px); transition: transform .25s ease; }
-
-        /* Sticky CTA bar */
-        .sticky-bar{
-          position: sticky;
-          bottom: 0;
-          z-index: 1020;
-          background: linear-gradient(90deg, rgba(124,58,237,.95), rgba(71,97,255,.95));
-          color: #fff;
-          padding: 10px 0;
-          box-shadow: 0 -6px 18px rgba(2,6,23,.2);
-        }
-        .pulse-dot{
-          width:10px; height:10px; border-radius:50%; background:#22c55e; display:inline-block; position:relative;
-        }
-        .pulse-dot::after{
-          content:""; position:absolute; inset:-6px; border-radius:50%;
-          border:2px solid rgba(34,197,94,.5);
-          animation:pulse 1.6s infinite;
-        }
-        @keyframes pulse{ 0%{transform:scale(.6); opacity:.9} 100%{transform:scale(1.4); opacity:0} }
-      `}</style>
-
-      {/* IntersectionObserver to add 'visible' class */}
-      <RevealOnScroll />
+      {/* —————————— Solution Modal —————————— */}
+      <Modal show={!!open} onHide={()=>setOpen(null)} centered>
+        <Modal.Header closeButton><Modal.Title>{open?.title}</Modal.Title></Modal.Header>
+        <Modal.Body>
+          <p className="mb-2">{open?.desc}</p>
+          <div className="mb-2">
+            {(open?.bullets||[]).map((b, i) => (
+              <span key={i} style={{ ...chip, marginRight: 6, marginBottom: 6 }}>{b}</span>
+            ))}
+          </div>
+          <div className="ratio ratio-16x9">
+            <Image src={open?.img} alt={open?.title} className="w-100 h-100" style={{ objectFit: "cover" }}/>
+          </div>
+        </Modal.Body>
+        <Modal.Footer>
+          <a href="#quote" className="btn btn-outline-secondary">Get started</a>
+          <Button onClick={()=>setOpen(null)} style={{ background: theme.grad, border: "none" }}>Close</Button>
+        </Modal.Footer>
+      </Modal>
     </>
   );
 }
 
-/* ===== Subcomponents ===== */
-function SectionHeader({ eyebrow, title, subtitle }) {
-  const theme = { grad: "linear-gradient(90deg, #7c3aed 0%, #4761ff 100%)", sub: "#6b7280" };
+/* ===================== Subcomponents ===================== */
+function Header({ eyebrow, title, sub }) {
+  const theme = { grad: "linear-gradient(90deg,#6d28d9 0%,#2563eb 100%)", sub: "#64748b" };
   return (
-    <Container className="mb-4">
-      <div className="text-center">
-        {eyebrow && (
-          <Badge className="rounded-3" bg="light" text="dark" style={{ border: "1px solid #ecebfd" }}>
-            {eyebrow}
-          </Badge>
-        )}
-        <h2 className="mt-2 fw-semibold fs-1" style={{ letterSpacing: "-0.3px" }}>{title}</h2>
-        {subtitle && <p style={{ color: theme.sub }}>{subtitle}</p>}
-        <div style={{ height: 3, width: 120, margin: "10px auto 0", background: theme.grad, borderRadius: 999 }} />
+    <div className="text-center mb-4">
+      {eyebrow && <Badge bg="light" text="dark" className="rounded-3">{eyebrow}</Badge>}
+      <h2 className="mt-2 fw-semibold fs-1" style={{ letterSpacing: "-0.3px" }}>{title}</h2>
+      {sub && <p className="mb-0" style={{ color: theme.sub }}>{sub}</p>}
+      <div style={{ height: 3, width: 120, margin: "12px auto 0", background: theme.grad, borderRadius: 999 }} />
+    </div>
+  );
+}
+
+function SolutionPanel({ data, onOpen, theme, layout="std" }) {
+  // two distinct visual templates to avoid resemblance to your previous section
+  if (layout === "big") {
+    return (
+      <div style={{
+        display: "grid",
+        gridTemplateColumns: "1.2fr 1fr",
+        gap: 12,
+        border: `1px solid ${theme.line}`,
+        borderRadius: 16,
+        overflow: "hidden",
+        background: "#fff",
+        height: "100%"
+      }}>
+        <div className="ratio ratio-16x9">
+          <Image src={data.img} alt={data.title} className="w-100 h-100" style={{ objectFit: "cover" }}/>
+        </div>
+        <div style={{ padding: 16, display: "flex", flexDirection: "column" }}>
+          <div className="d-inline-flex align-items-center gap-2 mb-1">
+            <span className="badge text-bg-light">{data.tag}</span>
+            <i className={`bi ${data.icon}`} />
+          </div>
+          <h5 className="mb-1">{data.title}</h5>
+          <p style={{ color: "#64748b" }} className="mb-2">{data.desc}</p>
+          <div className="mb-2">
+            {data.bullets.map((b, i) => (
+              <span key={i} style={{ fontSize: 12, padding: "6px 10px", borderRadius: 999, border: `1px solid ${theme.line}`, marginRight: 6, marginBottom: 6, display: "inline-block" }}>{b}</span>
+            ))}
+          </div>
+          <div className="mt-auto d-flex gap-2">
+            <Button size="sm" style={{ background: theme.grad, border: "none" }} onClick={()=>onOpen(data)}>
+              See details <i className="bi bi-arrow-right ms-1"/>
+            </Button>
+            <a href="#quote" className="btn btn-sm btn-outline-secondary">Get started</a>
+          </div>
+        </div>
       </div>
-    </Container>
-  );
-}
-
-function Divider() {
-  return <div style={{ height: 1, background: "linear-gradient(90deg,#ecebfd,#f1f5f9)", marginTop: 48 }} />;
-}
-
-function DecorativeOrbs() {
-  return (
-    <>
-      <div className="orb one" />
-      <div className="orb two" />
-    </>
-  );
-}
-
-function NoiseOverlay() {
-  return <div className="noise" style={{ position: "absolute", inset: 0 }} />;
-}
-
-/* Attach 'visible' to .reveal elements on scroll */
-function RevealOnScroll() {
-  const ref = useRef(null);
-  useEffect(() => {
-    const io = new IntersectionObserver(
-      (entries) => {
-        entries.forEach(e => {
-          if (e.isIntersecting) e.target.classList.add("visible");
-        });
-      }, { threshold: 0.12 }
     );
-    const nodes = document.querySelectorAll(".reveal");
-    nodes.forEach(n => io.observe(n));
-    return () => io.disconnect();
-  }, []);
-  return null;
+  }
+
+  // compact template
+  return (
+    <div style={{
+      border: `1px solid ${theme.line}`,
+      borderRadius: 16,
+      overflow: "hidden",
+      background: "#fff",
+      height: "100%",
+      display: "grid",
+      gridTemplateColumns: "1fr 1fr"
+    }}>
+      <div style={{ padding: 16 }}>
+        <div className="d-inline-flex align-items-center gap-2 mb-1">
+          <span className="badge text-bg-light">{data.tag}</span>
+          <i className={`bi ${data.icon}`} />
+        </div>
+        <h6 className="mb-1">{data.title}</h6>
+        <p style={{ color: "#64748b", fontSize: 14 }} className="mb-2">{data.desc}</p>
+        <div className="mb-2">
+          {data.bullets.map((b, i) => (
+            <span key={i} style={{ fontSize: 12, padding: "6px 10px", borderRadius: 999, border: `1px solid ${theme.line}`, marginRight: 6, marginBottom: 6, display: "inline-block" }}>{b}</span>
+          ))}
+        </div>
+        <div className="d-flex gap-2">
+          <Button size="sm" style={{ background: theme.grad, border: "none" }} onClick={()=>onOpen(data)}>Details</Button>
+          <a href="#quote" className="btn btn-sm btn-outline-secondary">Start</a>
+        </div>
+      </div>
+      <div className="ratio ratio-16x9">
+        <Image src={data.img} alt={data.title} className="w-100 h-100" style={{ objectFit: "cover" }}/>
+      </div>
+    </div>
+  );
+}
+
+function renderMatrix(row, plan) {
+  const iconY = <i className="bi bi-check2-circle text-success"/>;
+  const iconN = <i className="bi bi-dash-lg text-muted"/>;
+  switch (row) {
+    case "Channels / Pods":
+      return plan.name === "Starter" ? "1" : plan.name === "Growth" ? "2–3" : "Custom";
+    case "CRO Tests":
+      return plan.name === "Starter" ? iconN : iconY;
+    case "Lifecycle (Email/SMS)":
+      return plan.name !== "Starter" ? iconY : iconN;
+    case "Reporting":
+      return plan.name === "Enterprise" ? "Custom board" : plan.name === "Growth" ? "Weekly board" : "Monthly readout";
+    case "Support":
+      return plan.name === "Enterprise" ? "SLA" : "Email / chat";
+    default:
+      return "";
+  }
 }

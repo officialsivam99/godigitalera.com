@@ -4,11 +4,11 @@ import FeatureCard from "./FeatureCard.js";
 
 // --- Replace these with your actual image URLs ---
 const personalBg = "./images/hero1.jpg";
-const personalUi = "https://i.imgur.com/example-ui-1.png";
-const businessBg = "https://i.imgur.com/example-bg-2.jpg";
-const businessUi = "https://i.imgur.com/example-ui-2.png";
-const freelanceBg = "https://i.imgur.com/example-bg-3.jpg";
-const freelanceUi = "https://i.imgur.com/example-ui-3.png";
+const personalUi = "./images/hero1.jpg";
+const businessBg = "./images/hero1.jpg";
+const businessUi = "./images/hero2.jpg";
+const freelanceBg = "./images/hero2.jpg";
+const freelanceUi = "./images/hero1.jpg";
 
 const cardData = [
   {
