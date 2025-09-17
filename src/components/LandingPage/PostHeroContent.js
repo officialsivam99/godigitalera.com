@@ -476,141 +476,598 @@ export default function PostHeroSection() {
 
 
       {/* —————————— Process: vertical timeline —————————— */}
-      <section style={s.section}>
-        <Container>
-          <Header eyebrow="Process" title="Ship. Measure. Optimize. Repeat." />
-          <Row className="justify-content-center">
-            <Col lg={10}>
-              <div style={{ position: "relative", paddingLeft: 26 }}>
-                <div style={{
-                  position: "absolute", left: 8, top: 0, bottom: 0, width: 2,
-                  background: theme.grad, opacity: 0.35, borderRadius: 2
-                }} />
-                {[
-                  { h: "Audit & Plan", p: "90-day plan mapped to revenue KPIs + quick wins." },
-                  { h: "Build & Ship", p: "Weekly increments—pages, ads, creatives, tracking." },
-                  { h: "Measure & Learn", p: "Clean dashboards and readouts. What moved why." },
-                  { h: "Optimize & Scale", p: "A/Bs, budget shifts, creative loops, CRO." },
-                ].map((step, i) => (
-                  <div key={i} style={{ marginBottom: 16, paddingLeft: 14 }}>
-                    <div style={{
-                      width: 14, height: 14, borderRadius: 999,
-                      background: "white", border: `3px solid ${theme.brandB}`,
-                      position: "absolute", left: 1, marginTop: 6
-                    }} />
-                    <div className="fw-semibold">{step.h}</div>
-                    <div style={{ color: theme.sub, fontSize: 14 }}>{step.p}</div>
-                  </div>
-                ))}
-              </div>
-            </Col>
-          </Row>
-        </Container>
-      </section>
+     {/* ==== PROCESS (LIGHT + VISIBLE, NO JS) ==== */}
+{/* ==== PROCESS (LIGHT • BOOTSTRAP GRID • REGULAR WEIGHTS) ==== */}
+{/* ==== PROCESS (LIGHT CONTRAST) ==== */}
+<section className="process-wrap">
+  <style>{`
+    .process-wrap{padding:80px 0;background:#f9fafb;color:#1e293b}
+    .process-container{max-width:1200px;margin:0 auto;padding:0 16px}
+    .process-eyebrow{display:inline-flex;gap:8px;align-items:center;padding:4px 12px;border-radius:999px;background:#e0f2fe;border:1px solid #bae6fd;font-weight:400;font-size:14px;color:#075985}
+    .dot{width:8px;height:8px;border-radius:50%;background:linear-gradient(90deg,#2563eb,#7c3aed)}
+    .process-title{font-weight:400;letter-spacing:-.2px;line-height:1.2;margin:16px 0 12px;color:#0f172a}
+    .process-sub{color:#475569;max-width:700px;font-weight:400;margin:0 auto}
+    .visible-outline{margin-top:24px;border:1px solid #cbd5e1;border-radius:16px;background:#ffffff;box-shadow:0 4px 14px rgba(0,0,0,0.05)}
+    /* Left summary card */
+    .p-left{background:#f1f5f9;border:1px solid #cbd5e1;border-radius:14px;padding:20px}
+    .p-pill{display:flex;align-items:center;gap:8px;font-weight:400;color:#1e293b}
+    .p-big{font-size:30px;font-weight:400;color:#0f172a;margin:10px 0 4px}
+    .p-sub{color:#475569;font-size:14px}
+    .p-div{height:1px;background:#cbd5e1;margin:16px 0}
+    .p-badges{display:flex;flex-wrap:wrap;gap:8px}
+    .p-chip{padding:6px 12px;border-radius:10px;background:#e2e8f0;border:1px solid #cbd5e1;color:#1e293b;font-weight:400;font-size:13px}
+    .p-cta{display:flex;gap:10px;margin-top:16px;flex-wrap:wrap}
+    .btn-ghost{background:#ffffff;border:1px solid #94a3b8;color:#1e293b;border-radius:8px;padding:8px 14px;font-weight:400;font-size:14px;text-decoration:none}
+    .btn-ghost:hover{background:#f1f5f9}
+    .btn-primary-soft{background:linear-gradient(90deg,#2563eb,#7c3aed);border:none;color:#ffffff;border-radius:8px;padding:8px 14px;font-weight:400;font-size:14px;text-decoration:none;box-shadow:0 2px 6px rgba(37,99,235,0.3)}
+    .btn-primary-soft:hover{opacity:.9}
+    /* Right timeline */
+    .p-timeline{position:relative;padding-left:28px}
+    .p-rail{position:absolute;left:10px;top:0;bottom:0;width:2px;background:#cbd5e1}
+    .p-step{position:relative;margin-bottom:20px}
+    .p-node{position:absolute;left:-5px;top:20px;width:14px;height:14px;border-radius:50%;background:linear-gradient(90deg,#2563eb,#7c3aed);box-shadow:0 0 0 4px rgba(37,99,235,0.2)}
+    .p-card{background:#ffffff;border:1px solid #cbd5e1;border-radius:12px;padding:18px;box-shadow:0 2px 8px rgba(0,0,0,0.04)}
+    .p-tag{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:400;padding:4px 10px;border-radius:999px;background:#ede9fe;color:#5b21b6;border:1px solid #c4b5fd}
+    .p-title{margin:10px 0 6px;font-weight:400;color:#111827}
+    .p-desc{color:#475569;margin-bottom:10px;font-weight:400}
+    .p-bullets{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}
+    .p-pillb{padding:6px 10px;border-radius:999px;background:#f9fafb;border:1px solid #e2e8f0;color:#1e293b;font-weight:400;font-size:13px}
+    .p-foot{display:flex;align-items:center;justify-content:space-between;gap:12px}
+    .p-link{font-weight:400;color:#2563eb;text-decoration:none}
+    .p-link:hover{text-decoration:underline}
+    .p-meter{height:6px;border-radius:999px;background:#f1f5f9;position:relative;overflow:hidden;flex:1}
+    .p-meter>span{position:absolute;left:0;top:0;bottom:0;width:75%;background:linear-gradient(90deg,#2563eb,#7c3aed)}
+  `}</style>
 
-      {/* —————————— Pricing: compact comparison table (new) —————————— */}
-      <section style={sAlt}>
-        <Container>
-          <Header eyebrow="Plans" title="Pods that scale with you" sub="Start lean. Add pods as ROI compounds." />
-          <div className="d-flex justify-content-center mb-3">
-            <div style={{ border: `1px solid ${theme.line}`, borderRadius: 999, padding: 6, background: "#fff" }}>
-              <Button size="sm" variant={billing==="Monthly" ? "dark":"light"} onClick={()=>setBilling("Monthly")} className="me-1">Monthly</Button>
-              <Button size="sm" variant={billing!=="Monthly" ? "dark":"light"} onClick={()=>setBilling("Yearly (-15%)")}>Yearly −15%</Button>
+  <div className="process-container">
+    <div className="text-center">
+      <span className="process-eyebrow"><span className="dot" /> Our Process</span>
+      <h2 className="process-title h2">Ship. Measure. Optimize. Repeat.</h2>
+      <p className="process-sub">A balanced cadence that compounds growth. Minimal slides, more output—always tied to revenue.</p>
+    </div>
+
+    <div className="visible-outline">
+      <div className="row g-3 p-3">
+        {/* LEFT */}
+        <div className="col-lg-4">
+          <aside className="p-left">
+            <div className="p-pill"><span className="dot" /> Growth Co.</div>
+            <div className="p-big">+32% avg. CR</div>
+            <div className="p-sub">after 90 days across LPs</div>
+            <div className="p-div" />
+            <div className="p-badges">
+              <span className="p-chip">SEO + Paid + Creators</span>
+              <span className="p-chip">CRO / LP sprints</span>
+              <span className="p-chip">Clean tracking</span>
+              <span className="p-chip">LTV & retention</span>
             </div>
-          </div>
+            <div className="p-cta">
+              <a href="/playbooks" className="btn-ghost">View playbooks</a>
+              <a href="/book-a-call" className="btn-primary-soft">Book a strategy call</a>
+            </div>
+          </aside>
+        </div>
 
-          <div style={{ overflowX: "auto", border: `1px solid ${theme.line}`, borderRadius: 12, background: "#fff" }}>
-            <Table responsive borderless className="mb-0 align-middle">
-              <thead>
-                <tr style={{ borderBottom: `1px solid ${theme.line}` }}>
-                  <th className="py-3">Plan</th>
-                  {plans.map((p, i) => (
-                    <th key={i} className="py-3 text-center">
-                      <div className="fw-semibold">{p.name}</div>
-                      <div style={{ background: theme.grad, WebkitBackgroundClip: "text", color: "transparent", fontWeight: 800, fontSize: 18 }}>
-                        {priceLabel(p.price)}
-                      </div>
-                      {p.popular && <span className="badge text-bg-primary mt-1">Popular</span>}
-                    </th>
-                  ))}
-                </tr>
-              </thead>
-              <tbody>
-                {[
-                  "Channels / Pods", "CRO Tests", "Lifecycle (Email/SMS)", "Reporting", "Support"
-                ].map((row, ridx) => (
-                  <tr key={ridx} style={{ borderTop: `1px solid ${theme.line}` }}>
-                    <td className="py-3">{row}</td>
-                    {plans.map((p, i) => (
-                      <td key={i} className="py-3 text-center">
-                        {renderMatrix(row, p)}
-                      </td>
-                    ))}
-                  </tr>
-                ))}
-                <tr style={{ borderTop: `1px solid ${theme.line}` }}>
-                  <td />
-                  {plans.map((p, i) => (
-                    <td key={i} className="py-3 text-center">
-                      <a href="#quote" className="btn btn-dark btn-sm">Choose {p.name}</a>
-                    </td>
-                  ))}
-                </tr>
-              </tbody>
-            </Table>
+        {/* RIGHT */}
+        <div className="col-lg-8">
+          <div className="p-timeline">
+            <div className="p-rail" />
+            
+            <div className="p-step">
+              <div className="p-node" />
+              <div className="p-card">
+                <div className="p-tag">Audit & Plan</div>
+                <h5 className="p-title">90-Day Revenue Plan</h5>
+                <p className="p-desc">Audit SEO, Paid, Analytics & Funnels. A prioritized 90-day plan tied to revenue KPIs.</p>
+                <div className="p-bullets">
+                  <span className="p-pillb">• KPI tree & north-star</span>
+                  <span className="p-pillb">• Channel mix & budgets</span>
+                  <span className="p-pillb">• Roadmap with owners</span>
+                </div>
+                <div className="p-foot">
+                  <a className="p-link" href="/playbooks">Learn more →</a>
+                  <div className="p-meter"><span /></div>
+                </div>
+              </div>
+            </div>
+
+            <div className="p-step">
+              <div className="p-node" />
+              <div className="p-card">
+                <div className="p-tag">Build & Ship</div>
+                <h5 className="p-title">Conversion Engine</h5>
+                <p className="p-desc">Weekly increments: LPs, creatives, tracking fixes—removing friction & lifting CR.</p>
+                <div className="p-bullets">
+                  <span className="p-pillb">• LPs & CRO</span>
+                  <span className="p-pillb">• Offer & messaging tests</span>
+                  <span className="p-pillb">• Clean tracking</span>
+                </div>
+                <div className="p-foot">
+                  <a className="p-link" href="/solutions/conversion-engine">Learn more →</a>
+                  <div className="p-meter"><span /></div>
+                </div>
+              </div>
+            </div>
+
+            <div className="p-step">
+              <div className="p-node" />
+              <div className="p-card">
+                <div className="p-tag">Measure & Learn</div>
+                <h5 className="p-title">Signal & Noise</h5>
+                <p className="p-desc">Dashboards & readouts so you know what moved and why—tight feedback loops.</p>
+                <div className="p-bullets">
+                  <span className="p-pillb">• Attribution sanity</span>
+                  <span className="p-pillb">• Weekly readouts</span>
+                  <span className="p-pillb">• Learning backlog</span>
+                </div>
+                <div className="p-foot">
+                  <a className="p-link" href="/solutions/ai-marketing">Learn more →</a>
+                  <div className="p-meter"><span /></div>
+                </div>
+              </div>
+            </div>
+
+            <div className="p-step">
+              <div className="p-node" />
+              <div className="p-card">
+                <div className="p-tag">Optimize & Scale</div>
+                <h5 className="p-title">Traffic Acceleration</h5>
+                <p className="p-desc">Scale SEO sprints, paid efficiency, creators, and retention—to grow AOV, ROAS & LTV.</p>
+                <div className="p-bullets">
+                  <span className="p-pillb">• SEO & paid scale</span>
+                  <span className="p-pillb">• Creators/influencers</span>
+                  <span className="p-pillb">• LTV & retention</span>
+                </div>
+                <div className="p-foot">
+                  <a className="p-link" href="/solutions/traffic-acceleration">Learn more →</a>
+                  <div className="p-meter"><span /></div>
+                </div>
+              </div>
+            </div>
+
           </div>
-        </Container>
-      </section>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+
+
+
+
 
       {/* —————————— Playbooks quick row —————————— */}
-      <section style={s.section}>
-        <Container>
-          <Header eyebrow="Playbooks" title="Tools that make execution simple" />
-          <Row className="g-3">
-            {[
-              { t: "Traffic Acceleration OS", tag: "Playbook" },
-              { t: "Conversion Engine Sprints", tag: "Toolkit" },
-              { t: "AI Creative Matrix", tag: "Template" },
-            ].map((p, i) => (
-              <Col lg={4} key={i}>
-                <div style={{
-                  border: `1px solid ${theme.line}`, background: "#fff",
-                  borderRadius: 14, padding: 16, height: "100%"
-                }}>
-                  <Badge bg="light" text="dark" className="mb-2">{p.tag}</Badge>
-                  <div className="fw-semibold">{p.t}</div>
-                  <div className="mt-3">
-                    <a href="#quote" style={{ ...pill, display: "inline-block" }}>Request a copy</a>
-                  </div>
-                </div>
-              </Col>
-            ))}
-          </Row>
-        </Container>
-      </section>
+      {/* ==== PRICING (USD • MONTHLY↔QUARTERLY TOGGLE • UNIFORM BUTTONS • CUSTOM PLAN) ==== */}
+{/* ==== PRICING (USD • TOGGLE • BUTTONS ALIGNED) ==== */}
+<section className="pricing-wrap" style={{ position: "relative" }}>
+  <style>{`
+    .pricing-wrap{padding:90px 0;background:#0b1020;color:#eef2ff}
+    .pricing-container{max-width:1200px;margin:0 auto;padding:0 16px}
+
+    .pr-eyebrow{display:inline-flex;gap:8px;align-items:center;padding:6px 12px;border-radius:999px;background:rgba(59,130,246,.2);color:#bfdbfe;font-size:14px}
+    .pr-dot{width:10px;height:10px;border-radius:50%;background:linear-gradient(90deg,#3b82f6,#a855f7)}
+    .pr-title{color:#fff;letter-spacing:-.2px;margin:14px 0 8px;font-weight:400}
+    .pr-sub{color:#c7d2fe;max-width:760px;margin:0 auto;font-weight:400}
+
+    /* Toggle */
+    .toggle-wrap{margin-top:18px}
+    .pr-toggle{display:inline-flex;border:1px solid #334155;border-radius:12px;overflow:hidden}
+    .pr-toggle input{display:none}
+    .pr-toggle label{cursor:pointer;background:transparent;color:#cbd5e1;padding:10px 16px;font-weight:400;user-select:none}
+    #cycle-m:checked ~ .toggle-wrap .pr-toggle label[for="cycle-m"],
+    #cycle-q:checked ~ .toggle-wrap .pr-toggle label[for="cycle-q"]{background:#111836;color:#fff}
+
+    /* Price toggle */
+    .amt-m,.sub-m{display:none}
+    #cycle-m:checked ~ .plans .amt-m, #cycle-m:checked ~ .plans .sub-m{display:inline}
+    #cycle-m:checked ~ .plans .amt-q, #cycle-m:checked ~ .plans .sub-q{display:none}
+    #cycle-q:checked ~ .plans .amt-q, #cycle-q:checked ~ .plans .sub-q{display:inline}
+    #cycle-q:checked ~ .plans .amt-m, #cycle-q:checked ~ .plans .sub-m{display:none}
+
+    /* Cards */
+    .plans{margin-top:28px}
+    .cardx{
+      background:#0f1630;
+      border:1px solid #334155;
+      border-radius:16px;
+      padding:20px;
+      height:100%;
+      box-shadow:0 10px 30px rgba(0,0,0,.35);
+      transition:transform .2s ease, box-shadow .2s ease;
+      display:flex;
+      flex-direction:column;
+    }
+    .cardx:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(0,0,0,.5)}
+    .spotlight{background:linear-gradient(180deg,#111b3b 0%, #0f1630 100%);border:1px solid #4f46e5;box-shadow:0 18px 50px rgba(79,70,229,.35)}
+    .badge-best{display:inline-block;background:linear-gradient(90deg,#3b82f6,#a855f7);color:#fff;padding:4px 10px;border-radius:999px;font-size:12px;margin-bottom:8px}
+
+    .plan-name{font-size:18px;color:#e2e8f0;margin:6px 0 2px;font-weight:400}
+    .tagline{color:#a5b4fc;font-size:14px;margin-bottom:12px}
+    .price{display:flex;align-items:baseline;gap:8px;color:#fff}
+    .price .amt{font-size:32px;font-weight:400}
+    .price .sub{color:#93c5fd;font-size:14px}
+    .bestfor{color:#94a3b8;font-size:13px;margin:8px 0 14px}
+
+    .features{display:flex;flex-direction:column;gap:8px;margin:14px 0 16px;flex-grow:1}
+    .f-row{display:flex;align-items:center;gap:10px}
+    .f-yes{width:16px;height:16px;border-radius:4px;background:linear-gradient(90deg,#22c55e,#16a34a)}
+    .f-no{width:16px;height:16px;border-radius:4px;background:#334155;position:relative}
+    .f-no:after{content:"";position:absolute;inset:5px;background:#0b1020;border-radius:2px}
+    .f-label{color:#e5e7eb;font-size:14px}
+
+    .cta{margin-top:auto;display:flex;gap:10px;flex-wrap:wrap}
+    .btn-ghost, .btn-primary{
+      display:inline-block;text-decoration:none;border-radius:10px;padding:10px 16px;font-weight:400;
+    }
+    .btn-ghost{background:transparent;border:1px solid #64748b;color:#e2e8f0}
+    .btn-ghost:hover{background:#162043}
+    .btn-primary{background:linear-gradient(90deg,#3b82f6,#a855f7);border:0;color:#fff;box-shadow:0 6px 18px rgba(59,130,246,.4)}
+    .btn-primary:hover{opacity:.95;transform:translateY(-1px)}
+
+    .addons{margin-top:34px;background:#0f1630;border:1px solid #334155;border-radius:16px;padding:18px}
+    .addons h5{color:#fff;font-weight:400;margin-bottom:12px}
+    .addon{background:#0b1020;border:1px solid #334155;border-radius:12px;padding:12px}
+    .addon .t{color:#e2e8f0}
+    .addon .p{color:#93c5fd}
+
+    .note{color:#9aa6ff;font-size:13px;margin-top:14px}
+  `}</style>
+
+  <div className="pricing-container">
+    <div className="text-center">
+      <span className="pr-eyebrow"><span className="pr-dot" /> Pricing</span>
+      <h2 className="pr-title h2">Plans that map to how you grow</h2>
+      <p className="pr-sub">
+        Start where you are. Activate the Conversion Engine, scale Traffic Acceleration, add AI & Retention when it pays.
+      </p>
+    </div>
+
+    {/* Radios before toggle */}
+    <input type="radio" name="cycle" id="cycle-m" defaultChecked />
+    <input type="radio" name="cycle" id="cycle-q" />
+
+    <div className="toggle-wrap text-center">
+      <div className="pr-toggle">
+        <label htmlFor="cycle-m">Monthly</label>
+        <label htmlFor="cycle-q">Quarterly (save more)</label>
+      </div>
+    </div>
+
+    {/* Plans */}
+    <div className="plans">
+      <div className="row g-3">
+        {/* Launch */}
+        <div className="col-md-6 col-lg-3">
+          <div className="cardx">
+            <div>
+              <div className="plan-name">Launch</div>
+              <div className="tagline">Start strong, fix leaks, ship weekly</div>
+              <div className="price">
+                <span className="amt amt-m">$799</span><span className="sub sub-m">/month</span>
+                <span className="amt amt-q">$2,099</span><span className="sub sub-q">/quarter</span>
+              </div>
+              <div className="bestfor">Best for: New funnels, early-stage, MVPs</div>
+              <div className="features">
+                <div className="f-row"><span className="f-yes"/><span className="f-label">CRO / LP sprint</span></div>
+                <div className="f-row"><span className="f-yes"/><span className="f-label">SEO basics & setup</span></div>
+                <div className="f-row"><span className="f-yes"/><span className="f-label">Paid setup + 1 creative</span></div>
+                <div className="f-row"><span className="f-yes"/><span className="f-label">Analytics sanity (GA4 + pixels)</span></div>
+                <div className="f-row"><span className="f-no"/><span className="f-label">Email/SMS automations</span></div>
+              </div>
+            </div>
+            <div className="cta">
+              <a href="/playbooks" className="btn-ghost">See deliverables</a>
+              <a href="/book-a-call" className="btn-primary">Choose Launch</a>
+            </div>
+          </div>
+        </div>
+
+        {/* Growth */}
+        <div className="col-md-6 col-lg-3">
+          <div className="cardx spotlight">
+            <div>
+              <span className="badge-best">Most Popular</span>
+              <div className="plan-name">Growth</div>
+              <div className="tagline">Compound wins across channels</div>
+              <div className="price">
+                <span className="amt amt-m">$1,499</span><span className="sub sub-m">/month</span>
+                <span className="amt amt-q">$4,099</span><span className="sub sub-q">/quarter</span>
+              </div>
+              <div className="bestfor">Best for: D2C, SaaS trials, lead-gen at scale</div>
+              <div className="features">
+                <div className="f-row"><span className="f-yes"/><span className="f-label">A/B tests + CRO velocity</span></div>
+                <div className="f-row"><span className="f-yes"/><span className="f-label">SEO sprints</span></div>
+                <div className="f-row"><span className="f-yes"/><span className="f-label">Paid performance + 3 creatives</span></div>
+                <div className="f-row"><span className="f-yes"/><span className="f-label">AI-powered marketing</span></div>
+                <div className="f-row"><span className="f-yes"/><span className="f-label">Email flows + LTV growth</span></div>
+              </div>
+            </div>
+            <div className="cta">
+              <a href="/playbooks" className="btn-ghost">See deliverables</a>
+              <a href="/book-a-call" className="btn-primary">Choose Growth</a>
+            </div>
+          </div>
+        </div>
+
+        {/* Scale */}
+        <div className="col-md-6 col-lg-3">
+          <div className="cardx">
+            <div>
+              <div className="plan-name">Scale</div>
+              <div className="tagline">Aggressive growth with creators</div>
+              <div className="price">
+                <span className="amt amt-m">$2,999</span><span className="sub sub-m">/month</span>
+                <span className="amt amt-q">$8,199</span><span className="sub sub-q">/quarter</span>
+              </div>
+              <div className="bestfor">Best for: Brands with proven PMF</div>
+              <div className="features">
+                <div className="f-row"><span className="f-yes"/><span className="f-label">Full CRO program</span></div>
+                <div className="f-row"><span className="f-yes"/><span className="f-label">SEO + Content ops</span></div>
+                <div className="f-row"><span className="f-yes"/><span className="f-label">Paid efficiency + multi-platform</span></div>
+                <div className="f-row"><span className="f-yes"/><span className="f-label">Advanced AI creatives</span></div>
+                <div className="f-row"><span className="f-yes"/><span className="f-label">Influencer/community engine</span></div>
+              </div>
+            </div>
+            <div className="cta">
+              <a href="/playbooks" className="btn-ghost">See deliverables</a>
+              <a href="/book-a-call" className="btn-primary">Choose Scale</a>
+            </div>
+          </div>
+        </div>
+
+        {/* Custom */}
+        <div className="col-md-6 col-lg-3">
+          <div className="cardx">
+            <div>
+              <div className="plan-name">Custom</div>
+              <div className="tagline">Tailored scope for complex needs</div>
+              <div className="price"><span className="amt">$ —</span><span className="sub">/custom</span></div>
+              <div className="bestfor">Best for: Multi-market, heavy experimentation</div>
+              <div className="features">
+                <div className="f-row"><span className="f-yes"/><span className="f-label">Bespoke channel mix</span></div>
+                <div className="f-row"><span className="f-yes"/><span className="f-label">Dedicated strategist & analyst</span></div>
+                <div className="f-row"><span className="f-yes"/><span className="f-label">Creator program & partnerships</span></div>
+                <div className="f-row"><span className="f-yes"/><span className="f-label">Advanced tracking & attribution</span></div>
+              </div>
+            </div>
+            <div className="cta">
+              <a href="/playbooks" className="btn-ghost">See deliverables</a>
+              <a href="/contact" className="btn-primary">Contact Sales</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <p className="note text-center">
+      All plans include: strategy cadence, weekly exec readouts, dashboards & tracking hygiene. Pricing excludes ad spend & taxes.
+    </p>
+  </div>
+</section>
+
+
 
       {/* —————————— Testimonials: slim rail —————————— */}
-      <section style={sAlt}>
-        <Container>
-          <Header eyebrow="What clients say" title="Signal over noise." />
-          <Row className="g-3">
-            {testimonials.map((t, i) => (
-              <Col lg={4} key={i}>
-                <blockquote style={{
-                  background: "#fff", border: `1px solid ${theme.line}`,
-                  borderRadius: 14, padding: 16, height: "100%"
-                }}>
-                  <div style={{ color: theme.sub }}>&ldquo;{t.text}&rdquo;</div>
-                  <div className="mt-3">
-                    <span className="fw-semibold">{t.name}</span>
-                    <span className="ms-1" style={{ color: theme.sub }}>— {t.role}</span>
-                  </div>
-                </blockquote>
-              </Col>
-            ))}
-          </Row>
-        </Container>
-      </section>
+      
+{/* ==== TESTIMONIALS (LIGHT SECTION + SLIGHTLY DARK CARDS, 6 TOTAL) ==== */}
+<section className="testimonials-wrap" style={{ position: "relative" }}>
+  <style>{`
+    .testimonials-wrap{
+      padding:90px 0;background:#ffffff;color:#0f172a;
+      position:relative;isolation:isolate
+    }
+    .t-container{max-width:1200px;margin:0 auto;padding:0 16px;position:relative;z-index:1}
+
+    /* Header */
+    .t-eyebrow{display:inline-flex;gap:8px;align-items:center;padding:6px 12px;border-radius:999px;background:#e0f2fe;border:1px solid #bae6fd;color:#075985;font-size:14px}
+    .t-dot{width:10px;height:10px;border-radius:50%;background:linear-gradient(90deg,#3b82f6,#a855f7)}
+    .t-title{color:#0b1220;letter-spacing:-.2px;margin:14px 0 8px;font-weight:400}
+    .t-sub{color:#334155;max-width:780px;margin:0 auto 18px;font-weight:400}
+
+    /* Logos */
+    .logos{display:flex;gap:28px;flex-wrap:nowrap;overflow:auto;padding-bottom:4px;scrollbar-width:none}
+    .logos::-webkit-scrollbar{display:none}
+    .logos img{height:22px;filter:grayscale(100%) contrast(115%);opacity:.9;flex:0 0 auto}
+    .logos img:hover{opacity:1}
+
+    /* Cards */
+    .t-grid{margin-top:28px}
+    .t-card{
+      background:#f8fafc;  /* subtle dark-light slate */
+      border:1px solid #e2e8f0;
+      border-radius:16px;
+      padding:20px;height:100%;
+      box-shadow:0 10px 26px rgba(2,6,23,.08);
+      transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+      display:flex;flex-direction:column;gap:14px
+    }
+    .t-card:hover{transform:translateY(-4px);box-shadow:0 16px 36px rgba(2,6,23,.12);border-color:#cbd5e1}
+
+    .t-head{display:flex;align-items:center;gap:12px}
+    .t-avatar{width:44px;height:44px;border-radius:50%;background:#e2e8f0;display:flex;align-items:center;justify-content:center;font-size:18px;color:#1d4ed8;border:1px solid #cbd5e1}
+
+    .t-info{display:flex;flex-direction:column}
+    .t-name{color:#0f172a;font-weight:500;line-height:1}
+    .t-role{color:#475569;font-size:13px}
+
+    .t-badge{display:inline-flex;gap:6px;align-items:center;font-size:12px;
+      color:#fff;background:linear-gradient(90deg,#3b82f6,#a855f7);
+      border-radius:999px;padding:4px 10px}
+
+    .stars{display:flex;gap:3px}
+    .star{width:14px;height:14px;background:linear-gradient(90deg,#f59e0b,#fbbf24);
+      clip-path:polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%)}
+
+    .t-quote{color:#0f172a}
+    .t-quote:before{content:"“";color:#94a3b8;margin-right:2px}
+    .t-quote:after{content:"”";color:#94a3b8;margin-left:2px}
+
+    .t-metrics{display:flex;flex-wrap:wrap;gap:8px}
+    .chip{padding:6px 10px;border-radius:999px;background:#e2e8f0;border:1px solid #cbd5e1;color:#0b1220;font-size:12px}
+
+    /* Stat bar */
+    .statbar{height:8px;border-radius:999px;background:#e2e8f0;overflow:hidden}
+    .statbar>span{display:block;height:100%;background:linear-gradient(90deg,#3b82f6,#a855f7);width:0}
+    .to-80>span{animation:grow80 1.2s ease forwards}
+    .to-84>span{animation:grow84 1.2s ease forwards}
+    .to-86>span{animation:grow86 1.2s ease forwards}
+    .to-88>span{animation:grow88 1.2s ease forwards}
+    .to-90>span{animation:grow90 1.2s ease forwards}
+    .to-92>span{animation:grow92 1.2s ease forwards}
+    @keyframes grow80{to{width:80%}} @keyframes grow84{to{width:84%}}
+    @keyframes grow86{to{width:86%}} @keyframes grow88{to{width:88%}}
+    @keyframes grow90{to{width:90%}} @keyframes grow92{to{width:92%}}
+
+    /* Buttons */
+    .t-links{margin-top:auto;display:flex;gap:10px;flex-wrap:wrap}
+    .btn-ghost,.btn-primary{display:inline-block;text-decoration:none;border-radius:10px;padding:9px 14px;font-weight:500}
+    .btn-ghost{background:#f8fafc;border:1px solid #cbd5e1;color:#0f172a}
+    .btn-ghost:hover{background:#e2e8f0}
+    .btn-primary{background:linear-gradient(90deg,#3b82f6,#a855f7);border:0;color:#fff;box-shadow:0 6px 18px rgba(59,130,246,.25)}
+    .btn-primary:hover{opacity:.95;transform:translateY(-1px)}
+
+    .mini-kpi{font-size:12px;color:#475569}
+    .mini-kpi strong{color:#0f172a}
+  `}</style>
+
+  <div className="t-container">
+    <div className="text-center">
+      <span className="t-eyebrow"><span className="t-dot" /> Testimonials</span>
+      <h2 className="t-title h2">Outcomes our clients talk about</h2>
+      <p className="t-sub">
+        Proof across <strong>Traffic Acceleration</strong>, <strong>Conversion Engine</strong>, <strong>AI-Powered Marketing</strong>, <strong>Retention</strong>, and more.
+      </p>
+      <div className="logos">
+        <img src="/logos/brand1.svg" alt="Brand 1" />
+        <img src="/logos/brand2.svg" alt="Brand 2" />
+        <img src="/logos/brand3.svg" alt="Brand 3" />
+        <img src="/logos/brand4.svg" alt="Brand 4" />
+        <img src="/logos/brand5.svg" alt="Brand 5" />
+        <img src="/logos/brand6.svg" alt="Brand 6" />
+      </div>
+    </div>
+
+    {/* Cards (6 total) */}
+    <div className="t-grid">
+      <div className="row g-3">
+        {/* 1. Traffic Acceleration */}
+        <div className="col-md-6 col-lg-4">
+          <article className="t-card">
+            <div className="t-head">
+              <div className="t-avatar">S</div>
+              <div className="t-info"><div className="t-name">Sofia Nguyen</div><div className="t-role">CMO, D2C Apparel</div></div>
+              <span className="t-badge ms-auto">Traffic Acceleration</span>
+            </div>
+            <div className="stars"><span className="star"/><span className="star"/><span className="star"/><span className="star"/><span className="star"/></div>
+            <p className="t-quote">Week 2 tracking was clean; by week 6, SEO + paid compounded. CPC down, forecasts finally reliable.</p>
+            <div className="t-metrics"><span className="chip">+118% organic sessions</span><span className="chip">-27% blended CAC</span></div>
+            <div className="statbar to-84"><span/></div>
+            <div className="t-links"><a href="/playbooks" className="btn-ghost">See playbook</a><a href="/case-studies/traffic-acceleration" className="btn-primary">Read case study</a></div>
+            <div className="mini-kpi">Last 90 days: <strong>+42%</strong> non-brand clicks</div>
+          </article>
+        </div>
+
+        {/* 2. Conversion Engine */}
+        <div className="col-md-6 col-lg-4">
+          <article className="t-card">
+            <div className="t-head">
+              <div className="t-avatar">D</div>
+              <div className="t-info"><div className="t-name">Diego Ramos</div><div className="t-role">Head of Growth, SaaS</div></div>
+              <span className="t-badge ms-auto">Conversion Engine</span>
+            </div>
+            <div className="stars"><span className="star"/><span className="star"/><span className="star"/><span className="star"/><span className="star"/></div>
+            <p className="t-quote">Weekly shipping—forms, offers, copy—pushed CR from 2.4% → 4.1%. Readouts kept everyone aligned.</p>
+            <div className="t-metrics"><span className="chip">+71% signup CR</span><span className="chip">-35% time-to-test</span></div>
+            <div className="statbar to-90"><span/></div>
+            <div className="t-links"><a href="/solutions/conversion-engine" className="btn-ghost">See method</a><a href="/case-studies/conversion-engine" className="btn-primary">Read case study</a></div>
+            <div className="mini-kpi">Form drop-off down <strong>28%</strong></div>
+          </article>
+        </div>
+
+        {/* 3. AI & Retention */}
+        <div className="col-md-6 col-lg-4">
+          <article className="t-card">
+            <div className="t-head">
+              <div className="t-avatar">A</div>
+              <div className="t-info"><div className="t-name">Amelia Clark</div><div className="t-role">Founder, Beauty eCom</div></div>
+              <span className="t-badge ms-auto">AI & Retention</span>
+            </div>
+            <div className="stars"><span className="star"/><span className="star"/><span className="star"/><span className="star"/><span className="star"/></div>
+            <p className="t-quote">Predictive audiences + smarter copy lifted CTR and LTV. Flows now drive revenue without discounting.</p>
+            <div className="t-metrics"><span className="chip">+22% AOV</span><span className="chip">+34% LTV (90d)</span></div>
+            <div className="statbar to-86"><span/></div>
+            <div className="t-links"><a href="/solutions/ai-marketing" className="btn-ghost">See AI approach</a><a href="/case-studies/retention" className="btn-primary">Read case study</a></div>
+            <div className="mini-kpi">Emails revenue share <strong>29%</strong></div>
+          </article>
+        </div>
+
+        {/* 4. Local Domination */}
+        <div className="col-md-6 col-lg-4">
+          <article className="t-card">
+            <div className="t-head">
+              <div className="t-avatar">R</div>
+              <div className="t-info"><div className="t-name">Ryan Patel</div><div className="t-role">Owner, Local Services</div></div>
+              <span className="t-badge ms-auto">Local Domination</span>
+            </div>
+            <div className="stars"><span className="star"/><span className="star"/><span className="star"/><span className="star"/><span className="star"/></div>
+            <p className="t-quote">Maps + reviews + remarketing. Calls doubled without extra spend. A system the team can sustain.</p>
+            <div className="t-metrics"><span className="chip">2× inbound calls</span><span className="chip">Top 3 in Maps</span></div>
+            <div className="statbar to-88"><span/></div>
+            <div className="t-links"><a href="/industries/local" className="btn-ghost">See playbook</a><a href="/book-a-call" className="btn-primary">Book a call</a></div>
+            <div className="mini-kpi">Review velocity <strong>+64%</strong></div>
+          </article>
+        </div>
+
+        {/* 5. Healthcare Digital Trust */}
+        <div className="col-md-6 col-lg-4">
+          <article className="t-card">
+            <div className="t-head">
+              <div className="t-avatar">H</div>
+              <div className="t-info"><div className="t-name">Dr. Leah Singh</div><div className="t-role">Director, Clinic Network</div></div>
+              <span className="t-badge ms-auto">Healthcare Digital Trust</span>
+            </div>
+            <div className="stars"><span className="star"/><span className="star"/><span className="star"/><span className="star"/><span className="star"/></div>
+            <p className="t-quote">Local SEO + HIPAA-aware UX lifted bookings while keeping trust front and center.</p>
+            <div className="t-metrics"><span className="chip">+38% appointment requests</span><span className="chip">+24% calls from GMB</span></div>
+            <div className="statbar to-80"><span/></div>
+            <div className="t-links"><a href="/industries/healthcare" className="btn-ghost">See industry fit</a><a href="/case-studies/healthcare" className="btn-primary">Read case study</a></div>
+            <div className="mini-kpi">Clinic finder conversions <strong>+18%</strong></div>
+          </article>
+        </div>
+
+        {/* 6. Real Estate Funnels */}
+        <div className="col-md-6 col-lg-4">
+          <article className="t-card">
+            <div className="t-head">
+              <div className="t-avatar">E</div>
+              <div className="t-info"><div className="t-name">Elena Brooks</div><div className="t-role">Broker, Realty Group</div></div>
+              <span className="t-badge ms-auto">Real Estate Funnels</span>
+            </div>
+            <div className="stars"><span className="star"/><span className="star"/><span className="star"/><span className="star"/><span className="star"/></div>
+            <p className="t-quote">Lead gen + remarketing + nurturing gave our pipeline consistency. Showings doubled in peak season.</p>
+            <div className="t-metrics"><span className="chip">+61% qualified leads</span><span className="chip">CPL -22%</span></div>
+            <div className="statbar to-92"><span/></div>
+            <div className="t-links"><a href="/industries/real-estate" className="btn-ghost">See funnels</a><a href="/case-studies/real-estate" className="btn-primary">Read case study</a></div>
+            <div className="mini-kpi">Follow-up reply rate <strong>+33%</strong></div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+
 
       {/* —————————— Quote band (dark) —————————— */}
       <section id="quote" style={{ ...s.section, background: theme.ink }}>

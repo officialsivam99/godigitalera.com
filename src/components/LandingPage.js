@@ -13,8 +13,8 @@ const LandingPage = () => {
             <HeroSection />
             <PostHeroSection />
             {/* <ServicesSection /> */}
-            {/* <CaseStudiesSection />
-            <ProcessSection /> */}
+            {/* <CaseStudiesSection /> */}
+            {/* <ProcessSection />  */}
             {/* <ContactSection /> */}
         </div>
     );

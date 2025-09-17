@@ -1,5 +1,5 @@
-// src/components/Navbar.jsx
 import React, { useEffect } from "react";
+import { Link } from "react-router-dom";
 
 /**
  * Bootstrap 5 required:
@@ -48,9 +48,9 @@ export default function Navbar() {
     <nav className="navbar navbar-expand-lg bg-white border-bottom sticky-top" style={{ backdropFilter: "saturate(180%) blur(8px)" }}>
       <div className="container">
         {/* Brand */}
-        <a className="navbar-brand fw-bold" href="/" style={{ letterSpacing: ".2px" }}>
+        <Link className="navbar-brand fw-bold" to="/" style={{ letterSpacing: ".2px", textDecoration: "none" }}>
           Growth Co.
-        </a>
+        </Link>
 
         {/* Toggler */}
         <button
@@ -70,102 +70,100 @@ export default function Navbar() {
           <ul className="navbar-nav mx-lg-auto align-items-lg-center gap-lg-2">
             {/* Solutions (Compact Mega) */}
             <li className="nav-item dropdown mega-parent position-relative">
-              <a
-                className="nav-link dropdown-toggle fw-semibold"
-                href="#"
+              <button
+                className="nav-link dropdown-toggle fw-semibold btn btn-link"
                 id="solutionsMenu"
-                role="button"
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
+                style={{ textDecoration: "none" }}
               >
                 Solutions
-              </a>
+              </button>
               <div
                 className="dropdown-menu mega-card start-50 translate-middle-x py-3"
                 aria-labelledby="solutionsMenu"
               >
                 <div className="mega-2col">
-                  <a className="mega-item text-decoration-none" href="/solutions/traffic-acceleration">
+                  <Link className="mega-item text-decoration-none" to="/solutions/traffic-acceleration">
                     <div className="mega-title">Traffic Acceleration</div>
                     <div className="mega-desc">SEO + Paid + Creators to scale reach</div>
-                  </a>
-                  <a className="mega-item text-decoration-none" href="/solutions/conversion-engine">
+                  </Link>
+                  <Link className="mega-item text-decoration-none" to="/solutions/conversion-engine">
                     <div className="mega-title">Conversion Engine</div>
                     <div className="mega-desc">CRO, landing pages, A/B testing</div>
-                  </a>
-                  <a className="mega-item text-decoration-none" href="/solutions/ai-marketing">
+                  </Link>
+                  <Link className="mega-item text-decoration-none" to="/solutions/ai-marketing">
                     <div className="mega-title">AI-Powered Marketing</div>
                     <div className="mega-desc">Predictive targeting, AI copy, smart bids</div>
-                  </a>
-                  <a className="mega-item text-decoration-none" href="/solutions/retention">
+                  </Link>
+                  <Link className="mega-item text-decoration-none" to="/solutions/retention">
                     <div className="mega-title">Retention & Loyalty</div>
                     <div className="mega-desc">Email/SMS automation, LTV growth</div>
-                  </a>
-                  <a className="mega-item text-decoration-none" href="/solutions/influencer-community">
+                  </Link>
+                  <Link className="mega-item text-decoration-none" to="/solutions/influencer-community">
                     <div className="mega-title">Influencer & Community</div>
                     <div className="mega-desc">Creators, social, community flywheels</div>
-                  </a>
+                  </Link>
                 </div>
               </div>
             </li>
 
             {/* Industries (Compact Mega) */}
             <li className="nav-item dropdown mega-parent position-relative">
-              <a
-                className="nav-link dropdown-toggle fw-semibold"
-                href="#"
+              <button
+                className="nav-link dropdown-toggle fw-semibold btn btn-link"
                 id="industriesMenu"
-                role="button"
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
+                style={{ textDecoration: "none" }}
               >
                 Industries
-              </a>
+              </button>
               <div
                 className="dropdown-menu mega-card start-50 translate-middle-x py-3"
                 aria-labelledby="industriesMenu"
               >
                 <div className="mega-2col">
-                  <a className="mega-item text-decoration-none" href="/industries/saas">
+                  <Link className="mega-item text-decoration-none" to="/industries/saas">
                     <div className="mega-title">SaaS Growth Lab</div>
                     <div className="mega-desc">Trials, demos, MQL→SQL funnels</div>
-                  </a>
-                  <a className="mega-item text-decoration-none" href="/industries/ecommerce">
+                  </Link>
+                  <Link className="mega-item text-decoration-none" to="/industries/ecommerce">
                     <div className="mega-title">eCommerce Accelerator</div>
                     <div className="mega-desc">AOV, ROAS & LTV compounding</div>
-                  </a>
-                  <a className="mega-item text-decoration-none" href="/industries/healthcare">
+                  </Link>
+                  <Link className="mega-item text-decoration-none" to="/industries/healthcare">
                     <div className="mega-title">Healthcare Digital Trust</div>
                     <div className="mega-desc">Local SEO, credibility, HIPAA-aware UX</div>
-                  </a>
-                  <a className="mega-item text-decoration-none" href="/industries/real-estate">
+                  </Link>
+                  <Link className="mega-item text-decoration-none" to="/industries/real-estate">
                     <div className="mega-title">Real Estate Funnels</div>
                     <div className="mega-desc">Lead gen, remarketing, nurturing</div>
-                  </a>
-                  <a className="mega-item text-decoration-none" href="/industries/local">
+                  </Link>
+                  <Link className="mega-item text-decoration-none" to="/industries/local">
                     <div className="mega-title">Local Domination</div>
                     <div className="mega-desc">Maps, reviews, calls & bookings</div>
-                  </a>
+                  </Link>
                 </div>
               </div>
             </li>
 
             {/* Playbooks */}
             <li className="nav-item">
-              <a className="nav-link fw-semibold" href="/playbooks">Playbooks</a>
+              <Link className="nav-link fw-semibold" to="/playbooks">Playbooks</Link>
             </li>
 
             {/* About */}
             <li className="nav-item">
-              <a className="nav-link fw-semibold" href="/about">About</a>
+              <Link className="nav-link fw-semibold" to="/about">About</Link>
             </li>
           </ul>
 
           {/* CTA */}
           <div className="d-flex">
-            <a href="/book-a-call" className="btn btn-primary fw-bold rounded-4 px-3 px-lg-4">
+            <Link to="/book-a-call" className="btn btn-primary fw-bold rounded-4 px-3 px-lg-4">
               Book a Strategy Call
-            </a>
+            </Link>
           </div>
         </div>
       </div>
