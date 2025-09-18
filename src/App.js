@@ -1,11 +1,31 @@
-// src/App.js
+import React from "react";
+import { Routes, Route } from "react-router-dom";
 
-import React from 'react';
-import Navbar from './components/navbar.js';
-import HeroSection from './components/LandingPage/herosection.js'; // Import your new HeroSection
-import { ThemeProvider } from './components/ThemeContext.js';
-import LandingPage from './components/LandingPage.js';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import { ThemeProvider } from "./components/ThemeContext.js";
+import Navbar from "./components/navbar.js";
+import LandingPage from "./components/LandingPage.js";
+import Footer from "./components/footer.js";
+import "bootstrap/dist/css/bootstrap.min.css";
+
+// --- Solutions pages ---
+import TrafficAcceleration from "./pages/solutions/TrafficAcceleration.js";
+import ConversionEngine from "./pages/solutions/ConversionEngine.js";
+import AIMarketing from "./pages/solutions/AIMarketing.js";
+import Retention from "./pages/solutions/Retention.js";
+import InfluencerCommunity from "./pages/solutions/InfluencerCommunity.js";
+
+// --- Industries pages ---
+import SaaS from "./pages/industries/SaaS.js";
+import Ecommerce from "./pages/industries/Ecommerce.js";
+import Healthcare from "./pages/industries/Healthcare.js";
+import RealEstate from "./pages/industries/RealEstate.js";
+import Local from "./pages/industries/Local.js";
+
+// --- Top-level pages ---
+import Playbooks from "./pages/Playbooks.js";
+import About from "./pages/About.js";
+import BookACall from "./pages/BookACall.js";
+import NotFound from "./pages/NotFound.js";
 
 function App() {
   return (
