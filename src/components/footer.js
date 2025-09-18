@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import {
   Container, Row, Col, Form, Button, InputGroup, Badge, Nav, Alert, Card
 } from "react-bootstrap";
-import { Link } from "react-router-dom"; // Add this import
+import { Link } from "react-router-dom";
 
 export default function Footer() {
   /* ===== Theme (inline) ===== */
@@ -32,7 +32,7 @@ export default function Footer() {
   /* ===== State ===== */
   const [email, setEmail] = useState("");
   const [lang, setLang] = useState("en");
-  const [ccy, setCcy] = useState("INR");
+  const [ccy, setCcy] = useState("USD"); // default to USD
   const [msg, setMsg] = useState("");
 
   const subscribe = (e) => {
@@ -48,33 +48,35 @@ export default function Footer() {
 
   const backToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
 
-  /* ===== Data ===== */
+  /* ===== Internal links (updated to your actual routes) ===== */
   const links = {
     Services: [
-      ["Web Development", "./WebDevelopmentService"],
-      ["Social Media Marketing", "./SocialMediaMarketing"],
-      ["Search Engine Optimization", "./SearchEngineOptimization"],
-      ["PPC & Performance", "./PayPerClickMarketing"],
-      ["Email Marketing", "./EmailMarketing"],
-      ["Analytics", "./AnalyticsDashboard"],
-      
+      ["Traffic Acceleration", "/solutions/traffic-acceleration"],
+      ["Conversion Engine", "/solutions/conversion-engine"],
+      ["AI-Powered Marketing", "/solutions/ai-marketing"],
+      ["Retention & Loyalty", "/solutions/retention"],
+      ["Influencer & Community", "/solutions/influencer-community"],
+    ],
+    Industries: [
+      ["SaaS Growth Lab", "/industries/saas"],
+      ["eCommerce Accelerator", "/industries/ecommerce"],
+      ["Healthcare Digital Trust", "/industries/healthcare"],
+      ["Real Estate Funnels", "/industries/real-estate"],
+      ["Local Domination", "/industries/local"],
     ],
     Company: [
-      ["About", "#"],
-      ["Careers", "#"],
-      ["Partners", "#"],
-      ["Contact", "#quote"],
-    ],
-    Resources: [
-      ["Case Studies", "#"],
-      ["Blog", "#"],
-      ["Templates", "#"],
-      ["Guides & Playbooks", "#"],
+      ["About", "/about"],
+      ["Playbooks", "/playbooks"],
+      ["Book a Strategy Call", "/book-a-call"],
+      // Add more when you create them:
+      // ["Careers", "/careers"],
+      // ["Partners", "/partners"],
     ],
     Legal: [
-      ["Privacy Policy", "./PrivacyPolicy"],
-      ["Terms of Service", "./Terms"],
-      ["Refund Policy", "./ReturnRefund"]
+      // Point these to real pages once you add them; for now they route and can show 404 until built
+      ["Privacy Policy", "/privacy-policy"],
+      ["Terms of Service", "/terms"],
+      ["Refund Policy", "/refund-policy"],
     ],
   };
 
@@ -96,12 +98,12 @@ export default function Footer() {
               </div>
             </Col>
             <Col md={5} className="text-md-end">
-              <a href="#quote" className="btn btn-lg me-2" style={gradBtn}>
+              <Link to="/book-a-call" className="btn btn-lg me-2" style={gradBtn}>
                 Request a quote <i className="bi bi-arrow-right ms-1" />
-              </a>
-              <a href="#contact" className="btn btn-lg" style={ghostBtn}>
+              </Link>
+              <Link to="/about" className="btn btn-lg" style={ghostBtn}>
                 Talk to us <i className="bi bi-telephone-outbound ms-1" />
-              </a>
+              </Link>
             </Col>
           </Row>
         </Container>
@@ -173,11 +175,11 @@ export default function Footer() {
                   <Col xs={6} key={head}>
                     <div className="fw-semibold mb-2">{head}</div>
                     <Nav className="flex-column small">
-                      {items.map(([label, href]) => (
+                      {items.map(([label, to]) => (
                         <Nav.Link
                           key={label}
                           as={Link}
-                          to={href.replace('./', '/')} // Convert './PrivacyPolicy' to '/PrivacyPolicy'
+                          to={to}
                           className="px-0 py-1"
                           style={{ color: theme.sub }}
                         >
@@ -194,8 +196,6 @@ export default function Footer() {
             <Col lg={3} id="contact">
               <div className="fw-semibold mb-2">Contact</div>
               <div className="small" style={{ color: theme.sub }}>
-                {/* <div className="mb-1"><i className="bi bi-geo-alt me-2" /> 221B Baker Street, Mumbai, IN</div>
-                <div className="mb-1"><i className="bi bi-telephone me-2" /> +91 90000 00000</div> */}
                 <div><i className="bi bi-envelope me-2" /> info@mydigitalrise.com</div>
               </div>
 
@@ -216,8 +216,8 @@ export default function Footer() {
                   size="sm"
                   style={{ background: "rgba(255,255,255,.06)", color: "#fff", border: theme.border }}
                 >
-                  <option value="INR">INR ₹</option>
                   <option value="USD">USD $</option>
+                  <option value="INR">INR ₹</option>
                 </Form.Select>
               </div>
 
@@ -248,9 +248,11 @@ export default function Footer() {
             <Col md={4} className="text-md-end">
               <Nav className="justify-content-md-end small">
                 {[
-                  ["Privacy", "#"], ["Terms", "#"], ["Sitemap", "#"]
-                ].map(([label, href]) => (
-                  <Nav.Link key={label} href={href} className="px-2" style={{ color: theme.sub }}>
+                  ["Privacy", "/privacy-policy"],
+                  ["Terms", "/terms"],
+                  ["Sitemap", "/"],
+                ].map(([label, to]) => (
+                  <Nav.Link key={label} as={Link} to={to} className="px-2" style={{ color: theme.sub }}>
                     {label}
                   </Nav.Link>
                 ))}

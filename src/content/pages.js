@@ -10,7 +10,14 @@ export const SOLUTIONS = {
       { badge:"Paid", title:"Full-funnel Ads", desc:"Efficient Google/Meta with creative testing and smart bids.",
         bullets:["Creative testing","Search + PMAX","Remarketing"] },
       { badge:"Creators", title:"Influencer Fuel", desc:"UGC + partnerships to amplify what's already working.",
-        bullets:["UGC kits","Seeding","Spark ads"] }
+        bullets:["UGC kits","Seeding","Spark ads"] },
+        { badge:"SEO", title:"Technical + Content Sprints", desc:"Fix crawl, structure clusters, publish velocity.",
+        bullets:["Core Web Vitals","Topical clusters","Entity SEO"] },
+      { badge:"Paid", title:"Full-funnel Ads", desc:"Efficient Google/Meta with creative testing and smart bids.",
+        bullets:["Creative testing","Search + PMAX","Remarketing"] },
+      { badge:"Creators", title:"Influencer Fuel", desc:"UGC + partnerships to amplify what's already working.",
+        bullets:["UGC kits","Seeding","Spark ads"] },
+      
     ]
   },
   "conversion-engine": {
